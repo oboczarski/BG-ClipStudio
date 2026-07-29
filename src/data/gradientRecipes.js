@@ -58,59 +58,61 @@ export const repeatedGradientRecipes = [
   },
   {
     id: "conic-gear",
-    title: "Machined Solar Gear",
-    short: "Conic teeth, radial grooves, warm metal.",
+    title: "Repeating Conic Gear Rim",
+    short: "Machined gear facets in prismatic violet.",
     description:
-      "Thick conic teeth form the rim while radial grooves and bronze washes build the center plate.",
+      "The original faceted conic face, saturated diagonal bevel, and indexed violet gear rim form one continuous machine plate.",
     border: 12,
     padding: 26,
     radius: 34,
     background:
-      "radial-gradient(circle at 50% 48%, rgb(255 239 198 / 15%) 0 10%, transparent 26%) content-box, repeating-radial-gradient(circle at 50% 50%, rgb(255 191 115 / 18%) 0 4px, transparent 4px 17px) content-box, linear-gradient(145deg, rgb(31 22 15), rgb(8 6 8) 62%, rgb(2 3 7)) content-box, repeating-radial-gradient(circle at 50% 50%, rgb(255 209 102 / 22%) 0 3px, transparent 3px 14px) padding-box, conic-gradient(from 210deg at 50% 50%, rgb(72 39 12), rgb(20 12 9), rgb(5 6 12), rgb(92 55 18), rgb(13 8 7)) padding-box, repeating-conic-gradient(from 6deg at 50% 50%, rgb(255 213 132 / 82%) 0deg 6deg, rgb(116 60 18 / 78%) 6deg 13deg, rgb(7 8 14) 13deg 25deg, rgb(255 107 53 / 62%) 25deg 32deg, rgb(2 3 7) 32deg 45deg) border-box",
+      "repeating-conic-gradient(from 45deg, rgba(255, 255, 255, 0.3) 0deg, rgba(255, 255, 255, 0.05) 25%, transparent 0deg, transparent 50%) content-box content-box, linear-gradient(90deg, rgba(124, 58, 237, 0.25), transparent 33%, rgba(20, 184, 166, 0.25)) content-box content-box, linear-gradient(145deg, rgba(17, 14, 30, 0.8), rgba(3, 5, 12, 0.8)) content-box content-box, repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.533) 7px, rgba(0, 0, 0, 0.533) 13px, rgba(101, 40, 255, 0.99) 16px, rgba(251, 11, 136, 0.8) 20px, transparent 6px, transparent 30px, rgba(245, 12, 241, 0.92) 29px, rgba(105, 12, 251, 0.92) 46px, rgb(85, 0, 255) 52px, transparent 63px) padding-box padding-box, linear-gradient(135deg, rgb(27, 21, 43), rgb(4, 7, 13)) padding-box padding-box, repeating-linear-gradient(135deg, rgba(54, 58, 247, 0.22) 4px, rgba(84, 58, 237, 0.92) 10px, rgba(250, 14, 246, 0.95) 23px, rgb(0, 3, 17) 33px, rgb(2, 3, 17) 41px) border-box border-box",
     boxShadow:
       "0 30px 70px rgb(0 0 0 / 62%), 0 0 34px rgb(255 160 80 / 12%), inset 0 1px 0 rgb(255 239 198 / 13%), inset 0 -18px 34px rgb(0 0 0 / 48%)",
   },
   {
     id: "nested-mesh",
-    title: "Nested Mesh Observatory",
-    short: "Layered grids at three different scales.",
+    title: "Nested Mesh Stack",
+    short: "Radial mesh, diagonal traces, and conic indexing.",
     description:
-      "Fine face mesh, wider bevel rails, and segmented outer indexing give every box its own spatial frequency.",
-    border: 9,
-    padding: 27,
-    radius: 31,
+      "The original radial face mesh, diagonal circuit bevel, and segmented conic rim retain their separate visual frequencies.",
+    border: 8,
+    padding: 26,
+    radius: 30,
     background:
-      "repeating-linear-gradient(0deg, rgb(255 255 255 / 7%) 0 1px, transparent 1px 12px) content-box, repeating-linear-gradient(90deg, rgb(88 167 255 / 8%) 0 1px, transparent 1px 18px) content-box, linear-gradient(150deg, rgb(10 17 29), rgb(3 5 10)) content-box, repeating-linear-gradient(45deg, rgb(33 255 210 / 13%) 0 3px, transparent 3px 18px) padding-box, linear-gradient(140deg, rgb(8 22 31), rgb(5 7 14)) padding-box, repeating-linear-gradient(90deg, rgb(33 255 210 / 58%) 0 6px, rgb(4 8 14) 6px 18px, rgb(139 92 246 / 46%) 18px 25px, rgb(3 5 9) 25px 38px) border-box",
+      "repeating-radial-gradient(circle at 25% 20%, rgb(255 255 255 / 10%) 0 1px, transparent 1px 10px) content-box, linear-gradient(150deg, rgb(10 20 26), rgb(3 6 10)) content-box, repeating-linear-gradient(120deg, rgb(33 255 210 / 13%) 0 1px, transparent 1px 11px) padding-box, linear-gradient(145deg, rgb(6 19 26), rgb(4 8 13)) padding-box, repeating-conic-gradient(from 18deg at 50% 50%, rgb(255 79 184 / 34%) 0deg 6deg, transparent 6deg 19deg, rgb(88 167 255 / 28%) 19deg 25deg, transparent 25deg 38deg) border-box, linear-gradient(135deg, #21ffd2, #111827, #ff4fb8) border-box",
+    backgroundBlendMode: "screen, normal, screen, normal, screen, normal",
     boxShadow:
-      "0 28px 66px rgb(0 0 0 / 58%), 0 0 32px rgb(88 167 255 / 9%), inset 0 1px 0 rgb(255 255 255 / 10%)",
+      "0 28px 66px rgb(0 0 0 / 56%), 0 0 28px rgb(33 255 210 / 8%), inset 0 1px 0 rgb(255 255 255 / 10%)",
   },
   {
     id: "barcode-rim",
-    title: "Chromatic Barcode Seal",
-    short: "High-frequency vertical rim bands.",
+    title: "Chromatic Barcode Rim",
+    short: "Cyan, blue, and rose code bands.",
     description:
-      "A protected indigo face sits inside a dense barcode ring that alternates spectral inks and deep separators.",
-    border: 10,
-    padding: 25,
-    radius: 29,
+      "The original protected midnight face sits inside a dense barcode rim with cyan, blue, rose, and deep separator bands.",
+    border: 8,
+    padding: 26,
+    radius: 30,
     background:
-      "radial-gradient(ellipse at 76% 18%, rgb(255 79 184 / 16%), transparent 42%) content-box, linear-gradient(145deg, rgb(15 11 29), rgb(3 4 10)) content-box, linear-gradient(145deg, rgb(37 23 63), rgb(6 7 14)) padding-box, repeating-linear-gradient(90deg, rgb(255 79 184 / 74%) 0 3px, rgb(8 7 18) 3px 7px, rgb(88 167 255 / 64%) 7px 12px, rgb(8 7 18) 12px 18px, rgb(33 255 210 / 56%) 18px 20px, rgb(8 7 18) 20px 29px) border-box",
+      "radial-gradient(ellipse at 24% 18%, rgb(255 255 255 / 10%), transparent 42%) content-box, linear-gradient(150deg, rgb(10 18 29), rgb(3 6 11)) content-box, linear-gradient(145deg, rgb(5 13 22), rgb(2 4 8)) padding-box, repeating-linear-gradient(90deg, rgb(33 255 210 / 62%) 0 3px, rgb(88 167 255 / 34%) 3px 7px, rgb(255 79 184 / 42%) 7px 10px, rgb(2 4 8 / 100%) 10px 18px) border-box",
     boxShadow:
-      "0 28px 66px rgb(0 0 0 / 58%), 0 0 34px rgb(255 79 184 / 9%), inset 0 1px 0 rgb(255 255 255 / 10%)",
+      "0 26px 66px rgb(0 0 0 / 56%), 0 0 30px rgb(33 255 210 / 10%), inset 0 1px 0 rgb(255 255 255 / 10%)",
   },
   {
     id: "moire-glass",
-    title: "Moiré Interference Glass",
-    short: "Crossed line fields create optical tension.",
+    title: "Moiré Glass Field",
+    short: "Crossed translucent line fields.",
     description:
-      "Two translucent repeat systems cross at shallow angles above a midnight plate, with a quieter ribbed bevel.",
+      "The original crossed screen-blended line fields sit above a cool glass face, quieter ribbed bevel, and spectral edge.",
     border: 7,
-    padding: 26,
-    radius: 32,
+    padding: 27,
+    radius: 31,
     background:
-      "repeating-linear-gradient(17deg, rgb(126 249 255 / 12%) 0 2px, transparent 2px 11px) content-box, repeating-linear-gradient(-17deg, rgb(244 114 182 / 10%) 0 1px, transparent 1px 13px) content-box, radial-gradient(ellipse at 50% 42%, rgb(99 102 241 / 20%), transparent 58%) content-box, linear-gradient(150deg, rgb(8 13 27), rgb(2 4 10)) content-box, repeating-linear-gradient(90deg, rgb(255 255 255 / 7%) 0 1px, transparent 1px 12px) padding-box, linear-gradient(135deg, rgb(16 25 48), rgb(4 5 12)) padding-box, linear-gradient(135deg, rgb(126 249 255 / 52%), rgb(79 70 229 / 48%), rgb(244 114 182 / 54%)) border-box",
+      "repeating-linear-gradient(33deg, rgb(255 255 255 / 8%) 0 1px, transparent 1px 12px) content-box, repeating-linear-gradient(147deg, rgb(33 255 210 / 9%) 0 1px, transparent 1px 13px) content-box, linear-gradient(140deg, rgb(255 255 255 / 12%), rgb(255 255 255 / 3%)) content-box, repeating-linear-gradient(90deg, rgb(88 167 255 / 11%) 0 1px, transparent 1px 18px) padding-box, linear-gradient(145deg, rgb(6 15 26), rgb(3 6 10)) padding-box, linear-gradient(135deg, rgb(255 255 255 / 28%), rgb(33 255 210 / 30%), rgb(88 167 255 / 28%)) border-box",
+    backgroundBlendMode: "screen, screen, normal, screen, normal, normal",
     boxShadow:
-      "0 28px 68px rgb(0 0 0 / 58%), 0 0 38px rgb(99 102 241 / 11%), inset 0 1px 0 rgb(255 255 255 / 12%)",
+      "0 26px 62px rgb(0 0 0 / 54%), inset 0 1px 0 rgb(255 255 255 / 14%)",
   },
   {
     id: "halftone-portal",
@@ -120,23 +122,23 @@ export const repeatedGradientRecipes = [
       "Repeating radial dots make the center feel printed while the outer conic ring reads like a calibrated portal.",
     border: 9,
     padding: 25,
-    radius: 999,
+    radius: 32,
     background:
-      "repeating-radial-gradient(circle at 50% 50%, rgb(33 255 210 / 20%) 0 1px, transparent 1.5px 10px) content-box, radial-gradient(circle at 50% 50%, rgb(33 255 210 / 18%) 0 18%, transparent 55%) content-box, linear-gradient(150deg, rgb(8 19 25), rgb(3 6 10)) content-box, radial-gradient(circle at 50% 50%, rgb(0 0 0) 0 42%, rgb(23 58 70 / 62%) 55%, rgb(4 8 12) 76%) padding-box, repeating-conic-gradient(from 5deg at 50% 50%, rgb(255 209 102 / 60%) 0deg 4deg, rgb(33 255 210 / 42%) 4deg 8deg, transparent 8deg 18deg) border-box",
+      "repeating-radial-gradient(circle at 50% 50%, rgb(33 255 210 / 20%) 0 1px, transparent 1.5px 10px) content-box, radial-gradient(circle at 50% 50%, rgb(33 255 210 / 18%) 0 18%, transparent 55%) content-box, linear-gradient(150deg, rgb(8 19 25), rgb(3 6 10)) content-box, radial-gradient(circle at 50% 50%, rgb(0 0 0 / 100%) 0 42%, rgb(23 58 70 / 62%) 55%, rgb(4 8 12 / 100%) 76%) padding-box, repeating-conic-gradient(from 5deg at 50% 50%, rgb(255 209 102 / 60%) 0deg 4deg, rgb(33 255 210 / 42%) 4deg 8deg, transparent 8deg 18deg) border-box",
     boxShadow:
       "0 28px 66px rgb(0 0 0 / 58%), 0 0 35px rgb(255 209 102 / 8%), inset 0 1px 0 rgb(255 255 255 / 10%)",
   },
   {
     id: "coordinate-frame",
     title: "Neon Coordinate Frame",
-    short: "Major grids, minor grids, protected display.",
+    short: "Violet registry rings in a spectral frame.",
     description:
-      "Two orthogonal coordinate systems build the content field while bus markings and index blocks frame it.",
+      "The original violet radial registry sits over a dark coordinate hatch while the outer frame traverses the full spectrum.",
     border: 8,
     padding: 30,
     radius: 30,
     background:
-      "radial-gradient(circle at 22% 18%, rgb(173 255 47 / 18%) 0 12%, transparent 42%) content-box, repeating-linear-gradient(0deg, transparent 0 13px, rgb(173 255 47 / 13%) 13px 16px, transparent 16px 32px) content-box, repeating-linear-gradient(90deg, transparent 0 13px, rgb(114 92 255 / 13%) 13px 16px, transparent 16px 32px) content-box, linear-gradient(150deg, rgb(8 13 20), rgb(1 3 8)) content-box, repeating-linear-gradient(0deg, rgb(88 255 196 / 18%) 0 2px, transparent 2px 10px, rgb(88 167 255 / 14%) 10px 12px, transparent 12px 22px) padding-box, linear-gradient(145deg, rgb(5 16 23), rgb(2 4 9)) padding-box, repeating-linear-gradient(90deg, rgb(173 255 47 / 70%) 0 8px, rgb(9 12 20) 8px 26px, rgb(132 92 255 / 58%) 26px 34px, rgb(2 4 9) 34px 52px) border-box",
+      "linear-gradient(45deg, #0003, #3349) content-box, repeating-radial-gradient(at center, rgb(182 183 255) 6px, rgba(84, 58, 237, 0.99) 0px, rgba(250, 14, 246, 0.99) 32px, rgb(0, 3, 17) 33px, rgb(2, 3, 17) 35px) padding-box, repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px, transparent 10px, transparent 11px), repeating-linear-gradient(22.5deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px, transparent 10px, transparent 11px), linear-gradient(90deg, hsl(194,74%,56%), hsl(266,74%,56%), hsl(338,74%,56%), hsl(50,74%,56%), hsl(122,74%,56%)) border-box",
     boxShadow:
       "0 28px 68px rgb(0 0 0 / 58%), 0 0 32px rgb(173 255 47 / 9%), inset 0 1px 0 rgb(255 255 255 / 10%)",
   },
@@ -171,28 +173,28 @@ export const repeatedGradientRecipes = [
   {
     id: "voxel-inlay",
     title: "Prismatic Voxel Inlay",
-    short: "Chunky mosaic face and spectral rim bars.",
+    short: "Faceted violet voxels and prism-cut inlay.",
     description:
-      "A conic checker field, diagonal bevel fragments, and measured spectral rim bars create a machined mosaic.",
+      "The original checker facets, saturated magenta bevel fragments, and violet-blue prism rim form a dense machined mosaic.",
     border: 9,
     padding: 26,
     radius: 32,
     background:
-      "repeating-conic-gradient(from 45deg at 50% 50%, rgb(255 255 255 / 10%) 0 25%, transparent 0 50%) content-box, linear-gradient(90deg, rgb(124 58 237 / 18%), transparent 32%, rgb(20 184 166 / 18%)) content-box, linear-gradient(145deg, rgb(17 14 30), rgb(3 5 12)) content-box, repeating-linear-gradient(45deg, rgb(251 191 36 / 18%) 0 6px, transparent 6px 18px, rgb(45 212 191 / 12%) 18px 24px, transparent 24px 38px) padding-box, linear-gradient(135deg, rgb(27 21 43), rgb(4 7 13)) padding-box, repeating-linear-gradient(90deg, rgb(251 191 36 / 74%) 0 5px, rgb(124 58 237 / 52%) 5px 13px, rgb(20 184 166 / 50%) 13px 21px, rgb(2 3 7) 21px 36px) border-box",
+      "repeating-conic-gradient(from 45deg, rgba(255, 255, 255, 0.1) 0deg, rgba(255, 255, 255, 0.1) 25%, transparent 0deg, transparent 50%) content-box content-box, linear-gradient(90deg, rgba(124, 58, 237, 0.18), transparent 32%, rgba(20, 184, 166, 0.18)) content-box content-box, linear-gradient(145deg, rgb(17, 14, 30), rgb(3, 5, 12)) content-box content-box, repeating-linear-gradient(45deg, rgba(251, 91, 236, 0.8) 1px, rgba(251, 11, 136, 0.8) 15px, transparent 6px, transparent 19px, rgba(245, 12, 241, 0.92) 18px, rgba(105, 12, 251, 0.92) 29px, #50f 16px, transparent 38px) padding-box padding-box, linear-gradient(135deg, rgb(27, 21, 43), rgb(4, 7, 13)) padding-box padding-box, repeating-linear-gradient(135deg, rgba(51, 91, 236, 0.74) -6px, rgba(251, 11, 236, 0.74) 5px, rgba(124, 58, 237, 0.22) 5px, rgba(124, 58, 237, 0.02) 13px, rgba(20, 184, 166, 0.05) 13px, rgba(120, 84, 256, 0.5) 21px, rgb(22, 3, 87) 33px, rgb(2, 3, 7) 36px) border-box border-box",
     boxShadow:
       "0 30px 70px rgb(0 0 0 / 60%), 0 0 38px rgb(124 58 237 / 10%), inset 0 1px 0 rgb(255 255 255 / 11%)",
   },
   {
     id: "solar-flare",
-    title: "Solar Flare Circuit Rim",
-    short: "Ember traces and segmented solar teeth.",
+    title: "Solar Flare Rim",
+    short: "Spectral flare bands over a crosshatched circuit.",
     description:
-      "Warm flare rings and electrical ember traces climb through the boxes into a high-contrast solar rim.",
+      "The original cyan-magenta flare face, intersecting black circuit hatch, and full-spectrum rim return as one vivid plate.",
     border: 11,
     padding: 25,
     radius: 34,
     background:
-      "repeating-radial-gradient(circle at 20% 18%, rgb(255 236 179 / 18%) 0 4px, transparent 4px 22px) content-box, radial-gradient(circle at 25% 18%, rgb(255 111 0 / 24%), transparent 44%) content-box, linear-gradient(150deg, rgb(40 19 8), rgb(10 4 8) 55%, rgb(2 3 7)) content-box, repeating-linear-gradient(135deg, rgb(255 111 0 / 16%) 0 4px, transparent 4px 18px, rgb(255 213 79 / 12%) 18px 22px, transparent 22px 36px) padding-box, linear-gradient(145deg, rgb(44 15 9), rgb(6 4 8)) padding-box, repeating-conic-gradient(from 20deg at 50% 50%, rgb(255 213 79 / 82%) 0deg 7deg, rgb(255 87 34 / 64%) 7deg 16deg, rgb(22 7 10) 16deg 34deg) border-box",
+      "linear-gradient(45deg, rgba(52, 159, 222, 0.35), rgba(201, 2, 215, 0.35)) content-box, repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px, transparent 10px, transparent 11px) padding-box, repeating-linear-gradient(22.5deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px, transparent 10px, transparent 11px) border-box, linear-gradient(90deg, hsl(194,74%,56%), hsl(266,74%,56%), hsl(338,74%,56%), hsl(50,74%,56%), hsl(122,74%,56%)) padding-box, linear-gradient(90deg, rgba(188, 12, 80,0.2) 0%, rgba(188, 12, 80,0.2) 16.667%, rgba(117, 106, 136,0.2) 16.667%, rgba(117, 106, 136,0.2) 33.334%, rgba(153, 59, 108,0.2) 33.334%, rgba(153, 59, 108,0.2) 50.001%, rgba(11, 246, 220,0.2) 50.001%, rgba(11, 246, 220,0.2) 66.668%, rgba(46, 199, 192,0.2) 66.668%, rgba(46, 199, 192,0.2) 83.335%, rgba(82, 152, 164,0.2) 83.335%, rgba(82, 152, 164,0.2) 100.002%), linear-gradient(45deg, rgba(188, 12, 80,0.2) 0%, rgba(188, 12, 80,0.2) 16.667%, rgba(117, 106, 136,0.2) 16.667%, rgba(117, 106, 136,0.2) 33.334%, rgba(153, 59, 108,0.2) 33.334%, rgba(153, 59, 108,0.2) 50.001%, rgba(11, 246, 220,0.2) 50.001%, rgba(11, 246, 220,0.2) 66.668%, rgba(46, 199, 192,0.2) 66.668%, rgba(46, 199, 192,0.2) 83.335%, rgba(82, 152, 164,0.2) 83.335%, rgba(82, 152, 164,0.2) 100.002%), linear-gradient(0deg, rgba(188, 12, 80,0.2) 0%, rgba(188, 12, 80,0.2) 16.667%, rgba(117, 106, 136,0.2) 16.667%, rgba(117, 106, 136,0.2) 33.334%, rgba(153, 59, 108,0.2) 33.334%, rgba(153, 59, 108,0.2) 50.001%, rgba(11, 246, 220,0.2) 50.001%, rgba(11, 246, 220,0.2) 66.668%, rgba(46, 199, 192,0.2) 66.668%, rgba(46, 199, 192,0.2) 83.335%, rgba(82, 152, 164,0.2) 83.335%, rgba(82, 152, 164,0.2) 100.002%), linear-gradient(90deg, rgb(99, 122, 239), rgb(4, 152, 185)) border-box",
     boxShadow:
       "0 30px 74px rgb(0 0 0 / 62%), 0 0 42px rgb(255 111 0 / 14%), inset 0 1px 0 rgb(255 236 179 / 14%)",
   },
@@ -212,15 +214,15 @@ export const repeatedGradientRecipes = [
   },
   {
     id: "magnetic-flux",
-    title: "Magnetic Flux Slab",
-    short: "Alternating pole bands and field rings.",
+    title: "Magnetic Flux",
+    short: "Concentric pole fields and charged arcs.",
     description:
-      "Force bands cross the content surface while radial field rings and alternating pole-color rim blocks define the boundary.",
+      "The original concentric blue-violet pole field, bi-chromatic charge blooms, and rotating flux rim form a force-map surface.",
     border: 9,
     padding: 27,
     radius: 32,
     background:
-      "repeating-linear-gradient(118deg, rgb(96 165 250 / 20%) 0 8px, transparent 8px 22px, rgb(244 114 182 / 18%) 22px 30px, transparent 30px 48px) content-box, radial-gradient(ellipse at 20% 25%, rgb(96 165 250 / 20%), transparent 40%) content-box, radial-gradient(ellipse at 82% 72%, rgb(244 114 182 / 18%), transparent 44%) content-box, linear-gradient(145deg, rgb(7 10 23), rgb(2 3 8)) content-box, repeating-radial-gradient(ellipse at 50% 50%, rgb(255 255 255 / 8%) 0 2px, transparent 2px 16px) padding-box, linear-gradient(135deg, rgb(19 24 48), rgb(3 4 10)) padding-box, repeating-linear-gradient(90deg, rgb(96 165 250 / 58%) 0 10px, rgb(2 4 12) 10px 24px, rgb(244 114 182 / 52%) 24px 34px, rgb(2 4 12) 34px 50px) border-box",
+      "repeating-radial-gradient(circle, rgba(96, 165, 250, 0.82) -21px, rgba(96, 65, 250, 0.52) 11px, transparent 8px, transparent 1px, rgba(114, 4, 252, 0.28) 22px, rgba(254, 114, 252, 0.28) 54px, transparent 30px, transparent 48px) content-box padding-box, radial-gradient(at 20% 25%, rgba(96, 165, 250, 0.72), transparent 40%) content-box content-box, radial-gradient(at 82% 72%, rgba(244, 114, 182, 0.68), transparent 44%) content-box content-box, linear-gradient(145deg, rgb(7, 10, 23), rgb(2, 3, 8)) content-box content-box, radial-gradient(circle, rgb(254, 114, 248) 30%, rgb(0, 0, 0), rgb(95, 164, 250)) padding-box padding-box, repeating-conic-gradient(from 3deg at 50% 50%, #ae42c8 14deg 16deg, #477dff 25deg 24deg, transparent 45deg 45deg, #9045fa88 59deg 56deg) border-box",
     boxShadow:
       "0 30px 72px rgb(0 0 0 / 60%), 0 0 36px rgb(96 165 250 / 10%), 0 0 46px rgb(244 114 182 / 7%), inset 0 1px 0 rgb(255 255 255 / 11%)",
   },
@@ -356,6 +358,7 @@ export function gradientRecipeStyle(recipe, padding, border) {
     padding: `${padding}px`,
     "--gradient-background": recipe.background,
     "--gradient-background-repeat": recipe.backgroundRepeat ?? "repeat",
+    "--gradient-background-blend-mode": recipe.backgroundBlendMode ?? "normal",
     boxShadow: recipe.boxShadow,
   };
 }
@@ -366,12 +369,15 @@ export function gradientRecipeCss(recipe, padding, border) {
     recipe.backgroundRepeat && recipe.backgroundRepeat !== "repeat"
       ? `\nbackground-repeat: ${recipe.backgroundRepeat};`
       : "";
+  const blendMode = recipe.backgroundBlendMode
+    ? `\nbackground-blend-mode: ${recipe.backgroundBlendMode};`
+    : "";
 
   return `border: ${border}px solid transparent;
 border-radius: ${radius};
 padding: ${padding}px;
 background:
-  ${formatCssList(recipe.background)};${repeat}
+  ${formatCssList(recipe.background)};${repeat}${blendMode}
 box-shadow:
   ${formatCssList(recipe.boxShadow)};`;
 }
