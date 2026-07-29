@@ -7,7 +7,7 @@ import OriginLab from "./features/origin/OriginLab";
 import TextLab from "./features/text/TextLab";
 
 const tabs = [
-  { id: "card-designs", label: "Card designs", count: "41" },
+  { id: "card-designs", label: "Card designs", count: "43" },
   { id: "layer-anatomy", label: "Layer anatomy", count: "04" },
   { id: "origin-lab", label: "Origin lab", count: "04" },
   { id: "text-lab", label: "Text lab", count: "08" },
