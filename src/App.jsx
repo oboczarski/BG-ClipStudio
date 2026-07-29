@@ -10,8 +10,8 @@ const tabs = [
   { id: "card-designs", label: "Card designs", count: "43" },
   { id: "layer-anatomy", label: "Layer anatomy", count: "04" },
   { id: "origin-lab", label: "Origin lab", count: "04" },
-  { id: "text-lab", label: "Text lab", count: "08" },
-  { id: "liquid-glass", label: "Liquid glass", count: "08" },
+  { id: "text-lab", label: "Text lab", count: "16" },
+  { id: "liquid-glass", label: "Liquid glass", count: "10" },
 ];
 
 function readInitialTab() {
@@ -63,7 +63,7 @@ function AppHeader() {
             <a href="#studio-tabs" className="button button--primary">
               Enter the foundry
             </a>
-            <span>65 practical specimens · 4 full workbenches</span>
+            <span>77 practical specimens · 4 full workbenches</span>
           </div>
         </div>
 
