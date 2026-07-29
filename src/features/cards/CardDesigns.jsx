@@ -48,8 +48,8 @@ export default function CardDesigns() {
         sectionId="repeated-gradient-picker"
         kicker="07B · repeated gradient layer picker"
         title="Repeated-gradient card variations across content-box, padding-box, and border-box layers."
-        description="The original collection remains broad, but its previews and snippets now use the exact same recipe. Cinder Relief Atlas and Abyssal Biolume Observatory completely replace the two weakest plates."
-        badge="16 repaired recipes"
+        description="Fourteen original rendered designs are preserved. Only Topographic Contour Plate and Deepsea Sonar Plate are replaced; every displayed snippet is generated from the exact recipe rendering the selected card."
+        badge="14 restored · 2 redesigned"
       />
       <GradientGallery
         recipes={atelierGradientRecipes}
