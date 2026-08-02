@@ -122,7 +122,7 @@
   .tabs {
     width: max-content;
     min-width: 100%;
-    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    grid-template-columns: repeat(6, minmax(150px, 1fr));
   }
 
   .section,
