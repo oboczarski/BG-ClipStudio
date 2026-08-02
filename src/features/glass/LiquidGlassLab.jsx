@@ -7,6 +7,10 @@ import {
 } from "../../components/Controls";
 import SectionHeading from "../../components/SectionHeading";
 import {
+  getOpticalFieldStyles,
+  opticalFields,
+} from "../../data/glassFields";
+import {
   getGlassCode,
   getGlassStyles,
   glassRecipes,
@@ -58,6 +62,10 @@ export default function LiquidGlassLab() {
   const [recipeId, setRecipeId] = useState(glassRecipes[0].id);
   const recipe = glassRecipes.find((item) => item.id === recipeId);
   const [settings, setSettings] = useState(defaultSettings(glassRecipes[0]));
+  const [fieldId, setFieldId] = useState(opticalFields[0].id);
+  const field = opticalFields.find((item) => item.id === fieldId);
+  const fieldStyles = getOpticalFieldStyles(field);
+  const fieldNumber = opticalFields.findIndex((item) => item.id === fieldId) + 1;
 
   function selectRecipe(nextId) {
     const next = glassRecipes.find((item) => item.id === nextId);
@@ -69,32 +77,33 @@ export default function LiquidGlassLab() {
     setSettings((current) => ({ ...current, ...patch }));
   }
 
-  const code = getGlassCode(recipe, settings);
+  const code = getGlassCode(recipe, settings, field);
 
   return (
     <div className="tab-page liquid-glass-lab">
       <section className="page-intro page-intro--glass">
         <div>
           <span className="page-intro__eyebrow">Liquid glass, with substance</span>
-          <h2>Eight optical systems beyond generic glassmorphism.</h2>
+          <h2>Ten optical systems beyond generic glassmorphism.</h2>
         </div>
         <p>
           Each card combines a different transparency model, border treatment,
           internal reflection, tint strategy, and shadow character. The blur is only
-          one ingredient—and every example includes a robust non-blur fallback.
+          one ingredient—and twelve selectable optical fields make the refraction
+          behavior visible against genuinely different gradient environments.
         </p>
         <div className="page-intro__metrics">
           <div>
-            <strong>8</strong>
+            <strong>10</strong>
             <span>optical approaches</span>
           </div>
           <div>
-            <strong>12</strong>
+            <strong>13</strong>
             <span>live controls</span>
           </div>
           <div>
-            <strong>1</strong>
-            <span>fallback per recipe</span>
+            <strong>12</strong>
+            <span>optical fields</span>
           </div>
         </div>
       </section>
@@ -102,9 +111,9 @@ export default function LiquidGlassLab() {
       <section className="section glass-library">
         <SectionHeading
           kicker="01 · liquid glass collection"
-          title="A gallery of distinct optical behaviors, not eight tint swaps."
+          title="A gallery of distinct optical behaviors, not ten tint swaps."
           description="Select a specimen to load its material model into the optical bench."
-          badge="8 original designs"
+          badge="10 original designs"
         />
         <div className="glass-gallery">
           {glassRecipes.map((item) => (
@@ -157,6 +166,16 @@ export default function LiquidGlassLab() {
                   label: item.name,
                 }))}
                 onChange={selectRecipe}
+              />
+              <SelectControl
+                id="glass-field"
+                label="Optical field"
+                value={fieldId}
+                options={opticalFields.map((item) => ({
+                  value: item.id,
+                  label: item.name,
+                }))}
+                onChange={setFieldId}
               />
               <ColorControl
                 id="glass-tint"
@@ -252,6 +271,11 @@ export default function LiquidGlassLab() {
                 onChange={(highlightY) => patchSettings({ highlightY })}
               />
             </div>
+            <div className="glass-field-note">
+              <span>{field.category}</span>
+              <strong>{field.name}</strong>
+              <p>{field.description}</p>
+            </div>
             <div className="glass-anatomy">
               <div>
                 <span>01</span>
@@ -277,12 +301,23 @@ export default function LiquidGlassLab() {
           </aside>
 
           <div className="glass-bench__preview">
-            <div className={`glass-stage glass-stage--${recipe.id}`}>
-              <div className="glass-stage__orb glass-stage__orb--one" />
-              <div className="glass-stage__orb glass-stage__orb--two" />
-              <div className="glass-stage__rail">
-                <span>OPTICAL FIELD</span>
-                <small>Backdrop detail is intentionally visible through the specimen.</small>
+            <div
+              className={`glass-stage glass-stage--${recipe.id} glass-stage--field-${field.id}`}
+              style={fieldStyles.stage}
+            >
+              <div
+                className="glass-stage__field-layer glass-stage__field-layer--one"
+                style={fieldStyles.layerOne}
+              />
+              <div
+                className="glass-stage__field-layer glass-stage__field-layer--two"
+                style={fieldStyles.layerTwo}
+              />
+              <div className="glass-stage__rail" style={fieldStyles.rail}>
+                <span>
+                  OPTICAL FIELD / {String(fieldNumber).padStart(2, "0")}
+                </span>
+                <small>{field.name} · gradient-only environment</small>
               </div>
               <GlassCard recipe={recipe} settings={settings} />
             </div>

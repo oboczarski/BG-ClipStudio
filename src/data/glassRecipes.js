@@ -1,4 +1,5 @@
 import { rgb, styleObjectToRule } from "../utils/css";
+import { getOpticalFieldCode } from "./glassFields";
 
 function scaledAlpha(base, opacity) {
   return Number((base * (opacity / 100)).toFixed(3));
@@ -441,6 +442,112 @@ export const glassRecipes = [
     },
     fallback: "linear-gradient(150deg, rgb(24 54 59 / 96%), rgb(7 13 28 / 97%))",
   },
+  {
+    id: "fresnel-caustic",
+    name: "Fresnel Caustic Halo",
+    category: "concentric refraction",
+    description:
+      "A clear Fresnel lens with nested caustic rings, radial energy lines, a bright upper halo, and a prismatic perimeter that visibly reorganizes the field behind it.",
+    defaults: {
+      tint: "#72fce5",
+      accent: "#7c82ff",
+      blur: 28,
+      opacity: 62,
+      saturation: 164,
+      border: 2,
+      radius: 44,
+      depth: 28,
+      highlightX: 48,
+      highlightY: 18,
+      reflection: 88,
+    },
+    surface(settings) {
+      return {
+        background: `radial-gradient(ellipse at ${settings.highlightX}% ${settings.highlightY}%, rgb(255 255 255 / ${scaledAlpha(0.38, settings.reflection)}) 0 3%, transparent 28%), repeating-radial-gradient(ellipse at 50% 52%, transparent 0 19px, ${rgb(settings.tint, scaledAlpha(0.17, settings.reflection))} 20px 22px, transparent 23px 43px, ${rgb(settings.accent, scaledAlpha(0.12, settings.reflection))} 44px 46px, transparent 47px 71px) padding-box, repeating-conic-gradient(from 2deg at 50% 52%, rgb(255 255 255 / 9%) 0deg 1deg, transparent 1deg 13deg) padding-box, linear-gradient(145deg, rgb(255 255 255 / ${scaledAlpha(0.16, settings.opacity)}), ${rgb(settings.tint, scaledAlpha(0.06, settings.opacity))} 42%, rgb(4 11 24 / ${scaledAlpha(0.34, settings.opacity)}) 100%) padding-box, conic-gradient(from 204deg, rgb(255 255 255 / 76%), ${rgb(settings.tint, 0.68)} 18%, rgb(255 255 255 / 12%) 37%, ${rgb(settings.accent, 0.64)} 58%, rgb(255 106 210 / 48%) 74%, rgb(255 255 255 / 68%)) border-box`,
+        borderColor: "transparent",
+        boxShadow: shadowSet(settings, settings.tint, "floating"),
+      };
+    },
+    glint(settings) {
+      return {
+        position: "absolute",
+        zIndex: 1,
+        width: "84%",
+        height: "58%",
+        left: "8%",
+        top: "-18%",
+        borderRadius: "50%",
+        border: `1px solid rgb(255 255 255 / ${scaledAlpha(0.54, settings.reflection)})`,
+        boxShadow: `0 8px ${Math.round(settings.blur * 0.9)}px rgb(255 255 255 / 14%), inset 0 -8px ${Math.round(settings.blur * 0.7)}px ${rgb(settings.tint, 0.1)}`,
+        filter: `blur(${Math.max(0.4, Number((settings.blur * 0.025).toFixed(1)))}px)`,
+      };
+    },
+    lens(settings) {
+      return {
+        position: "absolute",
+        zIndex: 0,
+        inset: "11px",
+        borderRadius: `${Math.max(12, settings.radius - 9)}px`,
+        border: "1px solid rgb(255 255 255 / 13%)",
+        background: `repeating-radial-gradient(ellipse at 50% 52%, transparent 0 23px, rgb(255 255 255 / 8%) 24px 25px, transparent 26px 49px), radial-gradient(ellipse at 50% 52%, ${rgb(settings.tint, 0.05)}, transparent 63%)`,
+        boxShadow:
+          "inset 0 2px 0 rgb(255 255 255 / 22%), inset 0 -24px 42px rgb(0 0 0 / 15%)",
+      };
+    },
+    fallback: "linear-gradient(145deg, rgb(50 91 91 / 95%), rgb(20 25 61 / 96%))",
+  },
+  {
+    id: "mercury-laminate",
+    name: "Mercury Bubble Laminate",
+    category: "polarized mirror glass",
+    description:
+      "A dark mercury body traps reflective bubbles and silver bands beneath a polarized cyan-magenta edge, balancing mirror density with readable optical transparency.",
+    defaults: {
+      tint: "#95fff0",
+      accent: "#ff79dc",
+      blur: 22,
+      opacity: 80,
+      saturation: 180,
+      border: 2,
+      radius: 36,
+      depth: 30,
+      highlightX: 26,
+      highlightY: 16,
+      reflection: 92,
+    },
+    surface(settings) {
+      return {
+        background: `radial-gradient(ellipse at ${settings.highlightX}% ${settings.highlightY}%, rgb(255 255 255 / ${scaledAlpha(0.42, settings.reflection)}) 0 2%, transparent 25%), radial-gradient(circle at 17% 81%, transparent 0 7%, rgb(255 255 255 / 22%) 7.5% 8%, ${rgb(settings.tint, scaledAlpha(0.12, settings.opacity))} 9% 13%, transparent 14%), radial-gradient(circle at 83% 24%, transparent 0 10%, rgb(255 255 255 / 19%) 10.5% 11%, ${rgb(settings.accent, scaledAlpha(0.11, settings.opacity))} 12% 18%, transparent 19%), linear-gradient(164deg, rgb(255 255 255 / ${scaledAlpha(0.22, settings.opacity)}) 0%, rgb(102 123 135 / ${scaledAlpha(0.2, settings.opacity)}) 18%, rgb(3 8 15 / ${scaledAlpha(0.72, settings.opacity)}) 47%, ${rgb(settings.accent, scaledAlpha(0.09, settings.opacity))} 72%, rgb(218 245 244 / ${scaledAlpha(0.1, settings.opacity)}) 100%) padding-box, conic-gradient(from 218deg, rgb(255 255 255 / 82%), ${rgb(settings.tint, 0.7)} 19%, rgb(20 28 43 / 88%) 37%, ${rgb(settings.accent, 0.68)} 58%, rgb(255 227 162 / 48%) 74%, rgb(255 255 255 / 74%)) border-box`,
+        borderColor: "transparent",
+        boxShadow: shadowSet(settings, settings.accent, "floating"),
+      };
+    },
+    glint(settings) {
+      return {
+        position: "absolute",
+        zIndex: 1,
+        inset: "7% -12% auto",
+        height: "34%",
+        borderRadius: "50%",
+        background: `repeating-linear-gradient(174deg, transparent 0 12px, rgb(255 255 255 / ${scaledAlpha(0.28, settings.reflection)}) 13px 15px, transparent 16px 29px, ${rgb(settings.tint, 0.1)} 30px 33px, transparent 34px 48px)`,
+        transform: "rotate(-7deg)",
+        filter: `blur(${Math.max(1, Math.round(settings.blur * 0.1))}px)`,
+      };
+    },
+    lens(settings) {
+      return {
+        position: "absolute",
+        zIndex: 0,
+        inset: "12px",
+        borderRadius: `${Math.max(10, settings.radius - 10)}px`,
+        border: "1px solid rgb(255 255 255 / 9%)",
+        background: `radial-gradient(circle at 7px 9px, rgb(255 255 255 / 8%) 0 1px, transparent 1.5px) 0 0 / 23px 27px, linear-gradient(145deg, rgb(255 255 255 / 8%), ${rgb(settings.tint, 0.035)} 42%, rgb(0 0 0 / 16%))`,
+        boxShadow:
+          "inset 7px 8px 20px rgb(0 0 0 / 28%), inset -3px -3px 12px rgb(255 255 255 / 7%), inset 0 1px 0 rgb(255 255 255 / 16%)",
+      };
+    },
+    fallback: "linear-gradient(155deg, rgb(53 67 74 / 97%), rgb(6 9 17 / 98%))",
+  },
 ];
 
 export function getGlassStyles(recipe, settings, compact = false) {
@@ -478,17 +585,24 @@ export function getGlassStyles(recipe, settings, compact = false) {
   };
 }
 
-export function getGlassCode(recipe, settings) {
+export function getGlassCode(recipe, settings, field) {
   const styles = getGlassStyles(recipe, settings);
-  return `<article class="liquid-card">
-  <span class="liquid-card__lens" aria-hidden="true"></span>
-  <span class="liquid-card__glint" aria-hidden="true"></span>
-  <div class="liquid-card__content">
-    <!-- Your real card content -->
-  </div>
-</article>
+  const fieldCode = field ? `${getOpticalFieldCode(field)}
 
-${styleObjectToRule(".liquid-card", styles.surface)}
+` : "";
+  return `<section class="optical-field">
+  <span class="optical-field__layer optical-field__layer--one" aria-hidden="true"></span>
+  <span class="optical-field__layer optical-field__layer--two" aria-hidden="true"></span>
+  <article class="liquid-card">
+    <span class="liquid-card__lens" aria-hidden="true"></span>
+    <span class="liquid-card__glint" aria-hidden="true"></span>
+    <div class="liquid-card__content">
+      <!-- Your real card content -->
+    </div>
+  </article>
+</section>
+
+${fieldCode}${styleObjectToRule(".liquid-card", styles.surface)}
 
 ${styleObjectToRule(".liquid-card__lens", styles.lens)}
 
