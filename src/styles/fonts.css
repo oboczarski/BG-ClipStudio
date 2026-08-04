@@ -16,7 +16,6 @@
 
 .font-gallery {
   --gallery-font-size: 46px;
-  --gallery-name-size: 26px;
   --gallery-text-color: #f3fbff;
   --gallery-surface-color: #09111b;
   --gallery-tracking: 0px;
@@ -407,6 +406,7 @@
 }
 
 .font-card__identity {
+  flex: 1 1 auto;
   min-width: 0;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -435,7 +435,7 @@
   margin: 0;
   overflow: hidden;
   color: var(--gallery-text-color);
-  font-size: var(--gallery-name-size);
+  font-size: 40px;
   line-height: 1;
   letter-spacing: var(--gallery-tracking);
   text-overflow: ellipsis;
@@ -450,6 +450,61 @@
   letter-spacing: 0.035em;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.font-card__shared-colors {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.font-card-color-control {
+  width: 39px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 9px;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 4%), transparent),
+    rgb(0 0 0 / 24%);
+  cursor: pointer;
+}
+
+.font-card-color-control > span {
+  color: #82949d;
+  font: 820 6px/1 var(--mono);
+  letter-spacing: 0.025em;
+}
+
+.font-card-color-control input[type="color"] {
+  appearance: none;
+  width: 15px;
+  height: 19px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.font-card-color-control input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.font-card-color-control input[type="color"]::-webkit-color-swatch,
+.font-card-color-control input[type="color"]::-moz-color-swatch {
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 5px;
+}
+
+.font-card-color-control:focus-within {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
 }
 
 .font-card__status {
@@ -545,8 +600,8 @@
 
 .font-card__controls {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
   padding: 0 6px 6px;
 }
 
@@ -568,11 +623,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 9px;
+  gap: 4px;
   color: #82949d;
-  font: 780 8px/1 var(--mono);
+  font: 780 7px/1 var(--mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .font-card-control output {
@@ -598,7 +654,7 @@
   outline: none;
   background: rgb(0 0 0 / 28%);
   color: #e8f3f6;
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .font-card-control--readout strong {
@@ -876,8 +932,17 @@
     margin-left: 51px;
   }
 
-  .font-card__identity h4 {
-    font-size: max(21px, calc(var(--gallery-name-size) * 0.88));
+  .font-card__header {
+    gap: 6px;
+    padding: 7px 8px;
+  }
+
+  .font-card__identity {
+    gap: 6px;
+  }
+
+  .font-card-color-control {
+    width: 36px;
   }
 
   .font-copy-status {

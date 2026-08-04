@@ -38,7 +38,7 @@ function createFontChoices() {
   return Object.fromEntries(
     fontCatalog.map((font) => [
       font.family,
-      { weight: getDefaultWeight(font), style: "normal" },
+      { weight: getDefaultWeight(font) },
     ]),
   );
 }
@@ -202,29 +202,31 @@ function FontWeightControl({ font, choice, onChange }) {
   );
 }
 
-function FontStyleControl({ font, choice, onChange }) {
-  const controlId = `style-${fontSlug(font.family)}`;
-
-  if (!font.italic) {
-    return (
-      <div className="font-card-control font-card-control--readout">
-        <span>Style</span>
-        <strong>Normal only</strong>
-      </div>
-    );
-  }
-
+function SharedCardRangeControl({
+  controlId,
+  label,
+  value,
+  min,
+  max,
+  step = 1,
+  displayValue,
+  onChange,
+}) {
   return (
     <label className="font-card-control" htmlFor={controlId}>
-      <span>Style</span>
-      <select
+      <span>
+        {label}
+        <output>{displayValue}</output>
+      </span>
+      <input
         id={controlId}
-        value={choice.style}
-        onChange={(event) => onChange("style", event.target.value)}
-      >
-        <option value="normal">Normal</option>
-        <option value="italic">Italic</option>
-      </select>
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(event) => onChange(Number(event.target.value))}
+      />
     </label>
   );
 }
@@ -234,8 +236,13 @@ function FontCard({
   choice,
   sample,
   casing,
+  size,
+  tracking,
+  textColor,
+  surfaceColor,
   copiedFamily,
   onChoiceChange,
+  onSharedSettingChange,
   onCopy,
 }) {
   const { cardRef, status } = useLazyFont(font);
@@ -243,7 +250,6 @@ function FontCard({
   const familyStyle = {
     fontFamily: `"${font.family}", ${font.fallback}`,
     fontWeight: choice.weight,
-    fontStyle: choice.style,
     fontOpticalSizing: "auto",
   };
   const sourceUrl =
@@ -277,6 +283,36 @@ function FontCard({
             <p>{designerLabel}</p>
           </div>
         </div>
+        <div className="font-card__shared-colors" aria-label="Shared colors">
+          <label
+            className="font-card-color-control"
+            title="Text color · applies to every card"
+          >
+            <span>TXT</span>
+            <input
+              type="color"
+              value={textColor}
+              aria-label={`${font.family} shared text color`}
+              onInput={(event) =>
+                onSharedSettingChange("textColor", event.target.value)
+              }
+            />
+          </label>
+          <label
+            className="font-card-color-control"
+            title="Specimen ground · applies to every card"
+          >
+            <span>BG</span>
+            <input
+              type="color"
+              value={surfaceColor}
+              aria-label={`${font.family} shared specimen ground color`}
+              onInput={(event) =>
+                onSharedSettingChange("surfaceColor", event.target.value)
+              }
+            />
+          </label>
+        </div>
         <div className="font-card__status">
           <span className={`font-load font-load--${status}`} aria-hidden="true" />
           <small>
@@ -304,10 +340,24 @@ function FontCard({
           choice={choice}
           onChange={updateChoice}
         />
-        <FontStyleControl
-          font={font}
-          choice={choice}
-          onChange={updateChoice}
+        <SharedCardRangeControl
+          controlId={`size-${fontSlug(font.family)}`}
+          label="Font size"
+          value={size}
+          min={20}
+          max={84}
+          displayValue={`${size}px`}
+          onChange={(value) => onSharedSettingChange("size", value)}
+        />
+        <SharedCardRangeControl
+          controlId={`tracking-${fontSlug(font.family)}`}
+          label="Letter spacing"
+          value={tracking}
+          min={-5}
+          max={8}
+          step={0.1}
+          displayValue={`${tracking.toFixed(1)}px`}
+          onChange={(value) => onSharedSettingChange("tracking", value)}
         />
       </div>
 
@@ -404,7 +454,6 @@ export default function FontGallery() {
 
   const galleryStyle = {
     "--gallery-font-size": `${settings.size}px`,
-    "--gallery-name-size": `${Math.max(23, Math.round(settings.size * 0.56))}px`,
     "--gallery-text-color": settings.textColor,
     "--gallery-surface-color": settings.surfaceColor,
     "--gallery-tracking": `${settings.tracking}px`,
@@ -431,9 +480,7 @@ export default function FontGallery() {
 
   async function copyFontCode(font, choice) {
     try {
-      await copyToClipboard(
-        buildFontEmbedCode(font, choice.weight, choice.style),
-      );
+      await copyToClipboard(buildFontEmbedCode(font, choice.weight, "normal"));
       setCopiedFamily(font.family);
     } catch {
       setCopiedFamily("Copy failed");
@@ -483,7 +530,7 @@ export default function FontGallery() {
         <SectionHeading
           kicker="01 · universal specimen controls"
           title="Set the test once. Judge every family on equal ground."
-          description="The shared controls change every visible font specimen. Weight and italic choices remain independent on each card because each family exposes a different set of files or variable ranges."
+          description="The shared controls change every visible font specimen. Weight remains independent on each card because every family exposes a different set of files or variable ranges."
           badge={`${filteredFonts.length} of ${fontCatalog.length} visible`}
         />
 
@@ -554,7 +601,7 @@ export default function FontGallery() {
             id="font-gallery-tracking"
             label="Letter spacing"
             value={settings.tracking}
-            min={-2}
+            min={-5}
             max={8}
             step={0.1}
             unit="px"
@@ -651,7 +698,7 @@ export default function FontGallery() {
         <SectionHeading
           kicker="02 · requested family catalog"
           title="Browse by voice. Tune by family. Copy without guesswork."
-          description="Names and specimens use their selected family, weight, and style. Search and group filters never reset the independent choices you make on another card."
+          description="Names and specimens use their selected family and weight. Shared card controls update the full catalog, while changing one family’s weight never resets another."
           badge="live Google-hosted type"
         />
 
@@ -693,8 +740,13 @@ export default function FontGallery() {
                       choice={fontChoices[font.family]}
                       sample={settings.sample}
                       casing={settings.casing}
+                      size={settings.size}
+                      tracking={settings.tracking}
+                      textColor={settings.textColor}
+                      surfaceColor={settings.surfaceColor}
                       copiedFamily={copiedFamily}
                       onChoiceChange={updateChoice}
+                      onSharedSettingChange={updateSetting}
                       onCopy={copyFontCode}
                     />
                   ))}
