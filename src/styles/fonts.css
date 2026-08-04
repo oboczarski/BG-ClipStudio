@@ -347,6 +347,7 @@
 .font-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 11px;
 }
 
@@ -354,7 +355,7 @@
   --card-accent: var(--font-accent);
   min-width: 0;
   display: grid;
-  grid-template-rows: auto minmax(230px, 1fr) auto auto auto;
+  grid-template-rows: repeat(5, auto);
   border: 1px solid color-mix(in srgb, var(--card-accent) 19%, var(--line));
   border-radius: 24px;
   overflow: hidden;
@@ -373,7 +374,7 @@
     0 18px 38px rgb(0 0 0 / 25%),
     inset 0 1px 0 rgb(255 255 255 / 6%);
   content-visibility: auto;
-  contain-intrinsic-size: auto 540px;
+  contain-intrinsic-size: auto 410px;
 }
 
 .font-card--handwritten {
@@ -390,12 +391,12 @@
 
 .font-card__header {
   min-width: 0;
-  min-height: 74px;
+  min-height: 62px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  padding: 13px 15px;
+  padding: 10px 13px;
   border-bottom: 1px solid rgb(255 255 255 / 8%);
   background:
     linear-gradient(
@@ -443,7 +444,7 @@
 }
 
 .font-card__identity p {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   overflow: hidden;
   color: #72858f;
   font: 720 8px/1.2 var(--mono);
@@ -492,13 +493,13 @@
 
 .font-card__specimen {
   min-width: 0;
-  min-height: 230px;
+  min-height: 150px;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 19px;
-  margin: 13px;
-  padding: clamp(18px, 2.8vw, 30px);
+  grid-template-rows: auto auto;
+  align-content: start;
+  gap: 12px;
+  margin: 10px;
+  padding: clamp(15px, 2vw, 20px);
   border: 1px solid color-mix(in srgb, var(--card-accent) 15%, var(--line));
   border-radius: 18px;
   overflow: hidden;
@@ -532,11 +533,11 @@
 
 .font-card__specimen > span {
   width: 100%;
-  padding-top: 11px;
+  padding-top: 9px;
   border-top: 1px solid rgb(255 255 255 / 8%);
   overflow: hidden;
   color: color-mix(in srgb, var(--gallery-text-color) 64%, transparent);
-  font-size: clamp(11px, calc(var(--gallery-font-size) * 0.28), 17px);
+  font-size: clamp(14px, calc(var(--gallery-font-size) * 0.44), 22px);
   letter-spacing: calc(var(--gallery-tracking) + 0.04em);
   line-height: 1.2;
   text-align: var(--gallery-align);
@@ -548,16 +549,16 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-  padding: 0 13px 12px;
+  padding: 0 10px 9px;
 }
 
 .font-card-control {
   min-width: 0;
-  min-height: 61px;
+  min-height: 53px;
   display: grid;
   align-content: center;
-  gap: 7px;
-  padding: 9px 10px;
+  gap: 6px;
+  padding: 7px 9px;
   border: 1px solid rgb(255 255 255 / 9%);
   border-radius: 13px;
   background:
@@ -611,8 +612,8 @@
 .font-card__metadata {
   min-width: 0;
   display: grid;
-  gap: 8px;
-  padding: 12px 13px;
+  gap: 6px;
+  padding: 9px 10px;
   border-top: 1px solid rgb(255 255 255 / 7%);
   border-bottom: 1px solid rgb(255 255 255 / 7%);
   background: rgb(0 0 0 / 12%);
@@ -621,13 +622,21 @@
 .font-card__tags,
 .font-card__provenance {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 5px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.font-card__tags::-webkit-scrollbar,
+.font-card__provenance::-webkit-scrollbar {
+  display: none;
 }
 
 .font-card__tags span,
 .font-card__provenance span {
-  padding: 5px 7px;
+  flex: 0 0 auto;
+  padding: 4px 6px;
   border: 1px solid rgb(255 255 255 / 9%);
   border-radius: 999px;
   background: rgb(255 255 255 / 2.5%);
@@ -635,6 +644,7 @@
   font: 730 7px/1 var(--mono);
   letter-spacing: 0.045em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .font-card__tags span:first-child {
@@ -663,7 +673,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 11px 13px;
+  padding: 9px 10px;
   background: rgb(0 0 0 / 18%);
 }
 
@@ -878,17 +888,7 @@
   }
 
   .font-card {
-    grid-template-rows: auto minmax(210px, 1fr) auto auto auto;
     border-radius: 20px;
-  }
-
-  .font-card__header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .font-card__status {
-    margin-left: 42px;
   }
 
   .font-card__identity h4 {
@@ -896,25 +896,12 @@
   }
 
   .font-card__specimen {
-    min-height: 210px;
-    padding: 18px;
+    min-height: 140px;
+    padding: 15px;
   }
 
   .font-card__specimen p {
     font-size: min(var(--gallery-font-size), 62px);
-  }
-
-  .font-card__controls {
-    grid-template-columns: 1fr;
-  }
-
-  .font-card__footer {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .font-card__footer .button {
-    width: 100%;
   }
 
   .font-copy-status {

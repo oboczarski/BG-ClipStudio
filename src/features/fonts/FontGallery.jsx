@@ -20,7 +20,7 @@ import {
 import { copyToClipboard } from "../../utils/css";
 
 const DEFAULT_SETTINGS = {
-  sample: "Sphinx of black quartz, judge my vow.",
+  sample: "Dynasty Hub",
   search: "",
   group: "all",
   size: 46,
@@ -293,7 +293,9 @@ function FontCard({
 
       <div className="font-card__specimen">
         <p style={familyStyle}>{displaySample(sample, casing)}</p>
-        <span style={familyStyle}>Aa Bb Cc · 0123456789 · &amp; ?!</span>
+        <span style={familyStyle}>
+          DH dh · Aa Bb Cc · 0123456789 · &amp; ?! %.•, &gt;≤
+        </span>
       </div>
 
       <div className="font-card__controls">
