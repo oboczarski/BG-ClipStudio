@@ -348,7 +348,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
-  gap: 11px;
+  gap: 9px;
 }
 
 .font-card {
@@ -357,7 +357,7 @@
   display: grid;
   grid-template-rows: repeat(5, auto);
   border: 1px solid color-mix(in srgb, var(--card-accent) 19%, var(--line));
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   background:
     linear-gradient(90deg, rgb(255 255 255 / 2%) 1px, transparent 1px) 0 0 / 28px
@@ -374,7 +374,7 @@
     0 18px 38px rgb(0 0 0 / 25%),
     inset 0 1px 0 rgb(255 255 255 / 6%);
   content-visibility: auto;
-  contain-intrinsic-size: auto 410px;
+  contain-intrinsic-size: auto 330px;
 }
 
 .font-card--handwritten {
@@ -391,12 +391,11 @@
 
 .font-card__header {
   min-width: 0;
-  min-height: 62px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  padding: 10px 13px;
+  gap: 10px;
+  padding: 8px 9px;
   border-bottom: 1px solid rgb(255 255 255 / 8%);
   background:
     linear-gradient(
@@ -412,16 +411,16 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 11px;
+  gap: 8px;
 }
 
 .font-card__number {
-  width: 31px;
-  height: 31px;
+  width: 27px;
+  height: 27px;
   display: grid;
   place-items: center;
   border: 1px solid color-mix(in srgb, var(--card-accent) 28%, transparent);
-  border-radius: 10px;
+  border-radius: 8px;
   background: color-mix(in srgb, var(--card-accent) 7%, transparent);
   color: var(--card-accent);
   font: 850 8px/1 var(--mono);
@@ -437,14 +436,14 @@
   overflow: hidden;
   color: var(--gallery-text-color);
   font-size: var(--gallery-name-size);
-  line-height: 1.05;
+  line-height: 1;
   letter-spacing: var(--gallery-tracking);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .font-card__identity p {
-  margin: 4px 0 0;
+  margin: 3px 0 0;
   overflow: hidden;
   color: #72858f;
   font: 720 8px/1.2 var(--mono);
@@ -457,7 +456,7 @@
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .font-card__status small {
@@ -469,8 +468,8 @@
 }
 
 .font-load {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border: 1px solid rgb(255 255 255 / 14%);
   border-radius: 50%;
   background: #57646d;
@@ -493,15 +492,14 @@
 
 .font-card__specimen {
   min-width: 0;
-  min-height: 150px;
   display: grid;
   grid-template-rows: auto auto;
   align-content: start;
-  gap: 12px;
-  margin: 10px;
-  padding: clamp(15px, 2vw, 20px);
+  gap: clamp(6px, calc(var(--gallery-font-size) * 0.16), 10px);
+  margin: 6px;
+  padding: clamp(9px, calc(var(--gallery-font-size) * 0.26), 16px);
   border: 1px solid color-mix(in srgb, var(--card-accent) 15%, var(--line));
-  border-radius: 18px;
+  border-radius: 14px;
   overflow: hidden;
   background:
     linear-gradient(90deg, rgb(255 255 255 / 2.5%) 1px, transparent 1px) 0 0 /
@@ -533,13 +531,13 @@
 
 .font-card__specimen > span {
   width: 100%;
-  padding-top: 9px;
+  padding-top: clamp(5px, calc(var(--gallery-font-size) * 0.12), 8px);
   border-top: 1px solid rgb(255 255 255 / 8%);
   overflow: hidden;
   color: color-mix(in srgb, var(--gallery-text-color) 64%, transparent);
-  font-size: clamp(14px, calc(var(--gallery-font-size) * 0.44), 22px);
-  letter-spacing: calc(var(--gallery-tracking) + 0.04em);
-  line-height: 1.2;
+  font-size: calc(var(--gallery-font-size) * 0.6);
+  letter-spacing: calc(var(--gallery-tracking) + 0.025em);
+  line-height: 1.08;
   text-align: var(--gallery-align);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -548,19 +546,19 @@
 .font-card__controls {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  padding: 0 10px 9px;
+  gap: 6px;
+  padding: 0 6px 6px;
 }
 
 .font-card-control {
   min-width: 0;
-  min-height: 53px;
+  min-height: 46px;
   display: grid;
   align-content: center;
-  gap: 6px;
-  padding: 7px 9px;
+  gap: 5px;
+  padding: 6px 7px;
   border: 1px solid rgb(255 255 255 / 9%);
-  border-radius: 13px;
+  border-radius: 10px;
   background:
     linear-gradient(180deg, rgb(255 255 255 / 3%), transparent),
     rgb(0 0 0 / 22%);
@@ -585,7 +583,7 @@
 
 .font-card-control input[type="range"] {
   width: 100%;
-  height: 17px;
+  height: 15px;
   margin: 0;
   accent-color: var(--card-accent);
 }
@@ -593,8 +591,8 @@
 .font-card-control select {
   width: 100%;
   min-width: 0;
-  height: 29px;
-  padding: 0 8px;
+  height: 26px;
+  padding: 0 7px;
   border: 1px solid rgb(255 255 255 / 10%);
   border-radius: 8px;
   outline: none;
@@ -605,36 +603,28 @@
 
 .font-card-control--readout strong {
   color: #d5e4e9;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 760;
 }
 
 .font-card__metadata {
   min-width: 0;
-  display: grid;
-  gap: 6px;
-  padding: 9px 10px;
-  border-top: 1px solid rgb(255 255 255 / 7%);
-  border-bottom: 1px solid rgb(255 255 255 / 7%);
-  background: rgb(0 0 0 / 12%);
-}
-
-.font-card__tags,
-.font-card__provenance {
   display: flex;
   flex-wrap: nowrap;
-  gap: 5px;
+  gap: 4px;
+  padding: 6px;
+  border-top: 1px solid rgb(255 255 255 / 7%);
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
   overflow-x: auto;
+  background: rgb(0 0 0 / 12%);
   scrollbar-width: none;
 }
 
-.font-card__tags::-webkit-scrollbar,
-.font-card__provenance::-webkit-scrollbar {
+.font-card__metadata::-webkit-scrollbar {
   display: none;
 }
 
-.font-card__tags span,
-.font-card__provenance span {
+.font-card__metadata > span {
   flex: 0 0 auto;
   padding: 4px 6px;
   border: 1px solid rgb(255 255 255 / 9%);
@@ -647,33 +637,29 @@
   white-space: nowrap;
 }
 
-.font-card__tags span:first-child {
+.font-card__metadata > .font-card__metadata-accent {
   border-color: color-mix(in srgb, var(--card-accent) 27%, transparent);
   background: color-mix(in srgb, var(--card-accent) 7%, transparent);
   color: color-mix(in srgb, var(--card-accent) 82%, white);
 }
 
-.font-card__provenance span {
+.font-card__metadata > .font-card__metadata-provenance {
   border-style: dashed;
   color: #687983;
 }
 
-.font-card__notice {
-  margin: 0;
-  padding: 8px 9px;
-  border-left: 2px solid var(--gold);
-  border-radius: 4px 9px 9px 4px;
+.font-card__metadata > .font-card__metadata-notice {
+  border-color: color-mix(in srgb, var(--gold) 34%, transparent);
   background: rgb(246 200 105 / 6%);
   color: #c9b883;
-  font: 730 8px/1.4 var(--mono);
 }
 
 .font-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 9px 10px;
+  gap: 8px;
+  padding: 6px 7px;
   background: rgb(0 0 0 / 18%);
 }
 
@@ -681,7 +667,7 @@
   min-width: 0;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   overflow: hidden;
   color: #82959f;
   font: 760 8px/1 var(--mono);
@@ -701,7 +687,10 @@
 }
 
 .font-card__footer .button {
-  min-width: 132px;
+  min-width: 118px;
+  min-height: 28px;
+  padding: 6px 8px;
+  font-size: 9px;
 }
 
 .font-empty-state {
@@ -887,21 +876,8 @@
     margin-left: 51px;
   }
 
-  .font-card {
-    border-radius: 20px;
-  }
-
   .font-card__identity h4 {
     font-size: max(21px, calc(var(--gallery-name-size) * 0.88));
-  }
-
-  .font-card__specimen {
-    min-height: 140px;
-    padding: 15px;
-  }
-
-  .font-card__specimen p {
-    font-size: min(var(--gallery-font-size), 62px);
   }
 
   .font-copy-status {

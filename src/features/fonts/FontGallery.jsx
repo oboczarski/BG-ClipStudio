@@ -311,32 +311,32 @@ function FontCard({
         />
       </div>
 
-      <div className="font-card__metadata">
-        <div className="font-card__tags">
-          <span>{group.shortLabel}</span>
-          <span>{font.category}</span>
-          <span>{formatWeightInventory(font)}</span>
-          {font.italic ? <span>italic included</span> : null}
-          {font.axes.length > 0 ? (
-            <span>{font.axes.map((axis) => axis.tag).join(" · ")} axes</span>
-          ) : (
-            <span>static family</span>
-          )}
-          {font.colorCapabilities.length > 0 ? (
-            <span>{font.colorCapabilities.join(" + ")}</span>
-          ) : null}
-        </div>
-        <div className="font-card__provenance">
-          <span>
-            {font.catalogStatus === "catalog"
-              ? "Public catalog"
-              : "API-served / unlisted"}
-          </span>
-          <span>{font.openSource ? "Open source" : "Usage terms apply"}</span>
-          {font.brand ? <span>Brand family</span> : null}
-        </div>
+      <div className="font-card__metadata" aria-label="Font metadata">
+        <span className="font-card__metadata-accent">{group.shortLabel}</span>
+        <span>{font.category}</span>
+        <span>{formatWeightInventory(font)}</span>
+        {font.italic ? <span>italic included</span> : null}
+        {font.axes.length > 0 ? (
+          <span>{font.axes.map((axis) => axis.tag).join(" · ")} axes</span>
+        ) : (
+          <span>static family</span>
+        )}
+        {font.colorCapabilities.length > 0 ? (
+          <span>{font.colorCapabilities.join(" + ")}</span>
+        ) : null}
+        <span className="font-card__metadata-provenance">
+          {font.catalogStatus === "catalog"
+            ? "Public catalog"
+            : "API-served / unlisted"}
+        </span>
+        <span className="font-card__metadata-provenance">
+          {font.openSource ? "Open source" : "Usage terms apply"}
+        </span>
+        {font.brand ? (
+          <span className="font-card__metadata-provenance">Brand family</span>
+        ) : null}
         {font.licenseNote ? (
-          <p className="font-card__notice">{font.licenseNote}</p>
+          <span className="font-card__metadata-notice">{font.licenseNote}</span>
         ) : null}
       </div>
 
