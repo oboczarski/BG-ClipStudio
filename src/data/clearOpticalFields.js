@@ -181,32 +181,20 @@ const referencedFields = [
   {
     id: "magnetic-flux-field",
     name: "Magnetic Flux",
-    category: "charged pole map",
+    category: "source-accurate pole field",
     source: "Card Designs · 07B",
     description:
-      "Offset pole blooms and concentric charged arcs create a force-map field while omitting the source card’s rotating rim.",
+      "The supplied Magnetic Flux construction is used directly through its content and padding layers; only the final repeating-conic card rim is omitted from the optical field.",
     background:
-      "repeating-radial-gradient(circle at 50% 52%, rgb(96 165 250 / 72%) 0 2px, rgb(96 65 250 / 34%) 3px 11px, transparent 12px 27px, rgb(114 64 252 / 25%) 28px 31px, transparent 32px 49px), radial-gradient(circle at 20% 25%, rgb(96 165 250 / 82%), transparent 40%), radial-gradient(circle at 82% 72%, rgb(244 114 182 / 76%), transparent 44%), radial-gradient(ellipse at 50% 52%, rgb(10 11 32 / 96%) 0 18%, rgb(4 5 17 / 72%) 38%, transparent 68%), linear-gradient(145deg, #101938, #09081e 49%, #240b27)",
+      "repeating-radial-gradient(circle, rgba(96, 165, 250, 0.82) -21px, rgba(96, 65, 250, 0.52) 11px, transparent 8px, transparent 1px, rgba(114, 4, 252, 0.28) 22px, rgba(254, 114, 252, 0.28) 54px, transparent 30px, transparent 48px) content-box padding-box, radial-gradient(at 20% 25%, rgba(96, 165, 250, 0.72), transparent 40%) content-box content-box, radial-gradient(at 82% 72%, rgba(244, 114, 182, 0.68), transparent 44%) content-box content-box, linear-gradient(145deg, rgb(7, 10, 23), rgb(2, 3, 8)) content-box content-box, radial-gradient(circle, rgb(254, 114, 248) 30%, rgb(0, 0, 0), rgb(95, 164, 250)) padding-box padding-box",
     layers: [
       {
-        width: "52%",
-        aspectRatio: "1",
-        left: "-16%",
-        top: "6%",
-        borderRadius: "50%",
-        background:
-          "repeating-radial-gradient(circle, transparent 0 14px, rgb(109 201 255 / 42%) 15px 18px, transparent 19px 31px)",
-        filter: "blur(0.5px)",
+        inset: 0,
+        background: "transparent",
       },
       {
-        width: "56%",
-        aspectRatio: "1",
-        right: "-18%",
-        bottom: "-12%",
-        borderRadius: "50%",
-        background:
-          "repeating-radial-gradient(circle, transparent 0 17px, rgb(255 110 225 / 38%) 18px 21px, transparent 22px 37px)",
-        filter: "blur(0.5px)",
+        inset: 0,
+        background: "transparent",
       },
     ],
     rail: {
@@ -220,29 +208,34 @@ const referencedFields = [
     category: "new dark-mode field",
     source: "Clear Edition exclusive",
     description:
-      "Submerged teal caustics, graphite currents, and sparse silver bubbles keep the stage dark while preserving enough structure to reveal refraction.",
+      "A rebuilt abyssal chamber combines cellular caustic meshes, pressure rings, suspended silver plankton, and a luminous rift beneath a near-black water column.",
     background:
-      "radial-gradient(circle at 6px 7px, rgb(205 255 250 / 20%) 0 1px, transparent 1.6px) 0 0 / 39px 43px, repeating-radial-gradient(ellipse at 18% 16%, transparent 0 24px, rgb(89 255 230 / 13%) 25px 28px, transparent 29px 51px), repeating-radial-gradient(ellipse at 84% 76%, transparent 0 31px, rgb(96 152 255 / 12%) 32px 35px, transparent 36px 64px), radial-gradient(ellipse at 16% 14%, rgb(34 220 190 / 27%), transparent 42%), radial-gradient(ellipse at 83% 78%, rgb(47 84 207 / 25%), transparent 46%), linear-gradient(145deg, #071a1d, #030812 52%, #090718)",
+      "radial-gradient(circle at 5px 7px, rgb(206 255 246 / 28%) 0 1px, transparent 1.5px) 0 0 / 37px 43px, radial-gradient(circle at 4px 5px, rgb(97 153 255 / 20%) 0 1.4px, transparent 2px) 0 0 / 61px 67px, repeating-radial-gradient(ellipse at 24% 17%, transparent 0 18px, rgb(75 255 219 / 15%) 19px 21px, transparent 22px 41px, rgb(66 126 192 / 11%) 42px 45px, transparent 46px 70px), repeating-radial-gradient(ellipse at 82% 81%, transparent 0 28px, rgb(119 151 255 / 13%) 29px 32px, transparent 33px 57px, rgb(44 236 210 / 9%) 58px 60px, transparent 61px 89px), repeating-conic-gradient(from 11deg at 49% 54%, transparent 0deg 8deg, rgb(136 255 235 / 5%) 8deg 9deg, transparent 9deg 19deg, rgb(87 114 196 / 5%) 19deg 20deg), radial-gradient(ellipse at 50% 48%, rgb(0 0 0 / 12%) 0 12%, rgb(0 3 8 / 68%) 47%, transparent 72%), linear-gradient(145deg, #04191b, #02060c 49%, #090719)",
     layers: [
       {
-        width: "118%",
-        height: "31%",
-        left: "-17%",
-        top: "22%",
-        borderRadius: "50%",
-        border: "2px solid rgb(115 255 230 / 22%)",
-        boxShadow: "0 0 38px rgb(54 238 208 / 12%)",
-        transform: "rotate(-9deg)",
+        width: "82%",
+        height: "58%",
+        left: "-22%",
+        top: "-8%",
+        borderRadius: "38% 62% 44% 56% / 55% 36% 64% 45%",
+        background:
+          "repeating-radial-gradient(ellipse at 48% 52%, transparent 0 17px, rgb(159 255 237 / 20%) 18px 20px, transparent 21px 36px), conic-gradient(from 207deg, rgb(29 246 210 / 30%), rgb(12 66 93 / 14%), rgb(90 115 255 / 18%), rgb(29 246 210 / 30%))",
+        boxShadow:
+          "inset -22px -28px 46px rgb(0 6 14 / 48%), 0 0 68px rgb(33 229 201 / 16%)",
+        transform: "rotate(-16deg)",
+        opacity: 0.86,
       },
       {
         width: "94%",
-        height: "25%",
-        right: "-13%",
-        bottom: "13%",
-        borderRadius: "50%",
-        border: "1px solid rgb(119 156 255 / 20%)",
-        boxShadow: "inset 0 0 28px rgb(50 94 211 / 10%)",
-        transform: "rotate(12deg)",
+        height: "34%",
+        right: "-24%",
+        bottom: "-2%",
+        borderRadius: "50% 42% 58% 44% / 61% 39% 55% 45%",
+        background:
+          "linear-gradient(174deg, transparent 0 39%, rgb(220 255 250 / 42%) 43%, rgb(65 244 222 / 24%) 46%, rgb(38 68 158 / 18%) 54%, transparent 61%), repeating-radial-gradient(ellipse at 42% 56%, transparent 0 24px, rgb(105 151 255 / 16%) 25px 27px, transparent 28px 49px)",
+        filter: "blur(1px)",
+        transform: "rotate(11deg)",
+        boxShadow: "0 -18px 48px rgb(49 225 207 / 9%)",
       },
     ],
     rail: {
@@ -256,30 +249,34 @@ const referencedFields = [
     category: "new dark-mode field",
     source: "Clear Edition exclusive",
     description:
-      "Near-black silver interference rings cross a restrained ultraviolet eclipse, exposing edge light without washing out the glass body.",
+      "A rebuilt carbon-black observatory layers woven microfilaments, a silver eclipse, polarized ray fans, and two offset interference systems for high-contrast dark-mode testing.",
     background:
-      "repeating-conic-gradient(from 17deg at 72% 29%, rgb(240 245 255 / 9%) 0deg 1deg, transparent 1deg 9deg, rgb(148 115 255 / 8%) 9deg 11deg, transparent 11deg 21deg), repeating-radial-gradient(circle at 72% 29%, transparent 0 28px, rgb(223 231 255 / 13%) 29px 31px, transparent 32px 57px, rgb(141 105 255 / 10%) 58px 61px, transparent 62px 91px), radial-gradient(circle at 72% 29%, rgb(238 243 255 / 54%) 0 1%, rgb(120 111 180 / 25%) 8%, rgb(5 5 12 / 98%) 25%, transparent 26%), radial-gradient(ellipse at 18% 81%, rgb(55 72 110 / 34%), transparent 39%), linear-gradient(132deg, #17191e, #050609 48%, #0c0918)",
+      "repeating-linear-gradient(118deg, rgb(240 244 249 / 4%) 0 1px, transparent 1px 11px, rgb(78 88 104 / 5%) 11px 13px, transparent 13px 27px), repeating-linear-gradient(28deg, transparent 0 19px, rgb(205 214 227 / 4%) 19px 20px, transparent 20px 39px), repeating-conic-gradient(from 8deg at 68% 37%, rgb(239 244 250 / 15%) 0deg 0.8deg, transparent 0.8deg 7deg, rgb(124 105 226 / 10%) 7deg 8deg, transparent 8deg 17deg), repeating-radial-gradient(circle at 68% 37%, transparent 0 31px, rgb(227 234 244 / 18%) 32px 34px, transparent 35px 62px, rgb(123 103 224 / 12%) 63px 66px, transparent 67px 98px), radial-gradient(circle at 68% 37%, rgb(247 249 251 / 74%) 0 1.5%, rgb(123 127 142 / 38%) 7%, rgb(3 4 8 / 98%) 21%, rgb(0 0 0 / 78%) 31%, transparent 32%), radial-gradient(ellipse at 15% 84%, rgb(49 66 94 / 38%), transparent 42%), linear-gradient(134deg, #15171b, #040508 52%, #0c0917)",
     layers: [
       {
-        width: "54%",
+        width: "46%",
         aspectRatio: "1",
-        right: "-6%",
-        top: "-10%",
-        borderRadius: "50%",
-        border: "1px solid rgb(239 242 255 / 20%)",
-        boxShadow:
-          "0 0 0 18px rgb(185 195 225 / 3%), 0 0 0 48px rgb(151 121 255 / 3%), 0 0 70px rgb(119 82 255 / 12%)",
-      },
-      {
-        width: "68%",
-        height: "30%",
-        left: "-15%",
-        bottom: "4%",
+        right: "9%",
+        top: "12%",
         borderRadius: "50%",
         background:
-          "linear-gradient(175deg, transparent, rgb(215 229 244 / 12%) 49%, transparent 52%)",
-        filter: "blur(2px)",
-        transform: "rotate(-13deg)",
+          "radial-gradient(circle at 32% 26%, rgb(255 255 255 / 88%) 0 2%, rgb(179 185 202 / 48%) 8%, rgb(17 19 27 / 96%) 27%, rgb(1 2 5) 61%, rgb(88 64 164 / 72%) 82%, rgb(5 4 12) 100%)",
+        border: "1px solid rgb(240 244 249 / 34%)",
+        boxShadow:
+          "inset -24px -26px 44px rgb(0 0 0 / 72%), 0 0 0 16px rgb(212 219 231 / 3%), 0 0 0 43px rgb(137 112 230 / 3%), 0 0 86px rgb(121 88 226 / 18%)",
+      },
+      {
+        width: "108%",
+        height: "28%",
+        left: "-19%",
+        bottom: "8%",
+        borderRadius: "50%",
+        background:
+          "repeating-linear-gradient(175deg, transparent 0 14px, rgb(223 230 240 / 14%) 15px 16px, transparent 17px 31px, rgb(131 104 224 / 11%) 32px 34px, transparent 35px 52px), linear-gradient(180deg, transparent, rgb(232 237 245 / 8%) 48%, transparent 53%)",
+        border: "1px solid rgb(221 226 237 / 15%)",
+        filter: "blur(0.35px)",
+        transform: "rotate(-11deg)",
+        boxShadow: "0 0 42px rgb(103 78 191 / 10%)",
       },
     ],
     rail: {

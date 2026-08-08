@@ -1,6 +1,10 @@
 import { useState } from "react";
 import CodePanel from "../../components/CodePanel";
-import { RangeControl, SelectControl } from "../../components/Controls";
+import {
+  ColorControl,
+  RangeControl,
+  SelectControl,
+} from "../../components/Controls";
 import SectionHeading from "../../components/SectionHeading";
 import {
   clearGlassRecipes,
@@ -79,6 +83,7 @@ function ClearGlassCard({ recipe, settings, compact = false }) {
             {settings.blur}px blur
           </span>
           <span>{settings.density}% density</span>
+          <span>{settings.borderWidth}px rim</span>
           <span>{settings.edge}% edge</span>
         </div>
       </div>
@@ -103,9 +108,33 @@ export default function ClearLiquidGlassSuite() {
   const recipe = clearGlassRecipes.find((item) => item.id === recipeId);
   const [settings, setSettings] = useState(defaultSettings(clearGlassRecipes[0]));
   const [fieldId, setFieldId] = useState(clearGlassRecipes[0].fieldId);
+  const [fieldMode, setFieldMode] = useState("gradient");
+  const [solidColor, setSolidColor] = useState("#10131a");
   const field = clearOpticalFields.find((item) => item.id === fieldId);
-  const fieldStyles = getClearOpticalFieldStyles(field);
+  const gradientFieldStyles = getClearOpticalFieldStyles(field);
+  const fieldStyles =
+    fieldMode === "gradient"
+      ? gradientFieldStyles
+      : {
+          stage: { background: solidColor },
+          layerOne: { ...gradientFieldStyles.layerOne, display: "none" },
+          layerTwo: { ...gradientFieldStyles.layerTwo, display: "none" },
+          rail: {
+            color: "rgb(245 249 252 / 72%)",
+            borderColor: "rgb(255 255 255 / 18%)",
+          },
+        };
   const fieldNumber = clearOpticalFields.findIndex((item) => item.id === fieldId) + 1;
+  const fieldMeta =
+    fieldMode === "gradient"
+      ? field
+      : {
+          category: "custom solid field",
+          source: "Live color control",
+          name: `Solid ${solidColor.toUpperCase()}`,
+          description:
+            "A completely flat color field for judging border readability, body density, tint neutrality, and fallback contrast without gradient detail.",
+        };
 
   function selectRecipe(nextId, matchField = true) {
     const next = clearGlassRecipes.find((item) => item.id === nextId);
@@ -130,8 +159,8 @@ export default function ClearLiquidGlassSuite() {
         <SectionHeading
           kicker="01 · liquid glass collection / clear edition"
           title="Color belongs behind the glass—not baked through every surface."
-          description="Seven new clear, silver, satin, smoked, fluid, and edge-dispersive materials focus on lensing, light response, translucency, and depth. Select a specimen to load its complete material into the new optical bench."
-          badge="7 new materials"
+          description="Ten clear, satin, smoked, fluid, Fresnel, polarized, waterglass, and prismatic materials use distinct surface and border constructions. Select a specimen to load its complete material into the optical bench."
+          badge="10 material systems"
         />
 
         <div className="clear-glass-principles" aria-label="Clear edition principles">
@@ -197,7 +226,7 @@ export default function ClearLiquidGlassSuite() {
         <SectionHeading
           kicker="02 · optical bench / clear edition"
           title="Tune the physics of the material, then copy only the card."
-          description="The controls are specific to these seven surfaces: surface density, diffusion, clarity, edge luminance, specular energy, refraction spread, and separation from the field. The two selectors make every material and background independently testable."
+          description="The controls tune ten distinct surfaces: body density, diffusion, clarity, border width, edge luminance, specular energy, refraction spread, and separation from either a gradient design or a custom solid field."
           badge={recipe.name}
         />
 
@@ -206,7 +235,7 @@ export default function ClearLiquidGlassSuite() {
             <div className="clear-glass-controls__header">
               <div>
                 <span>Clear-material controls</span>
-                <small>12 live optical parameters</small>
+                <small>13 live material parameters</small>
               </div>
               <button className="button button--quiet" type="button" onClick={resetMaterial}>
                 Reset material
@@ -214,26 +243,58 @@ export default function ClearLiquidGlassSuite() {
             </div>
 
             <ControlGroup eyebrow="01" title="System and environment">
-              <SelectControl
-                id="clear-glass-recipe"
-                label="Glass style"
-                value={recipeId}
-                options={clearGlassRecipes.map((item) => ({
-                  value: item.id,
-                  label: item.name,
-                }))}
-                onChange={(nextId) => selectRecipe(nextId)}
-              />
-              <SelectControl
-                id="clear-glass-field"
-                label="Gradient background"
-                value={fieldId}
-                options={clearOpticalFields.map((item) => ({
-                  value: item.id,
-                  label: item.name,
-                }))}
-                onChange={setFieldId}
-              />
+              <div className="clear-field-style-control">
+                <SelectControl
+                  id="clear-glass-recipe"
+                  label="Glass style"
+                  value={recipeId}
+                  options={clearGlassRecipes.map((item) => ({
+                    value: item.id,
+                    label: item.name,
+                  }))}
+                  onChange={(nextId) => selectRecipe(nextId)}
+                />
+              </div>
+              <div className="clear-field-mode">
+                <span className="clear-field-mode__label">Optical field type</span>
+                <div className="clear-field-mode__switch" role="group" aria-label="Optical field type">
+                  <button
+                    type="button"
+                    aria-pressed={fieldMode === "gradient"}
+                    onClick={() => setFieldMode("gradient")}
+                  >
+                    Gradient designs
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={fieldMode === "solid"}
+                    onClick={() => setFieldMode("solid")}
+                  >
+                    Solid colors
+                  </button>
+                </div>
+              </div>
+              <div className="clear-field-source-control">
+                {fieldMode === "gradient" ? (
+                  <SelectControl
+                    id="clear-glass-field"
+                    label="Gradient background"
+                    value={fieldId}
+                    options={clearOpticalFields.map((item) => ({
+                      value: item.id,
+                      label: item.name,
+                    }))}
+                    onChange={setFieldId}
+                  />
+                ) : (
+                  <ColorControl
+                    id="clear-glass-solid-color"
+                    label="Solid field color"
+                    value={solidColor}
+                    onChange={setSolidColor}
+                  />
+                )}
+              </div>
             </ControlGroup>
 
             <ControlGroup eyebrow="02" title="Transmission and diffusion">
@@ -284,7 +345,16 @@ export default function ClearLiquidGlassSuite() {
               />
             </ControlGroup>
 
-            <ControlGroup eyebrow="03" title="Light, edge, and depth">
+            <ControlGroup eyebrow="03" title="Border, light, and depth">
+              <RangeControl
+                id="clear-glass-border-width"
+                label="Optical border width"
+                min={1}
+                max={6}
+                value={settings.borderWidth}
+                unit="px"
+                onChange={(borderWidth) => patchSettings({ borderWidth })}
+              />
               <RangeControl
                 id="clear-glass-edge"
                 label="Edge luminance"
@@ -355,17 +425,17 @@ export default function ClearLiquidGlassSuite() {
 
             <div className="clear-glass-field-note">
               <div>
-                <span>{field.category}</span>
-                <small>{field.source}</small>
+                <span>{fieldMeta.category}</span>
+                <small>{fieldMeta.source}</small>
               </div>
-              <strong>{field.name}</strong>
-              <p>{field.description}</p>
+              <strong>{fieldMeta.name}</strong>
+              <p>{fieldMeta.description}</p>
             </div>
           </aside>
 
           <div className="clear-glass-bench__preview">
             <div
-              className={`clear-optical-field clear-glass-stage clear-glass-stage--${field.id}`}
+              className={`clear-optical-field clear-glass-stage ${fieldMode === "gradient" ? `clear-glass-stage--${field.id}` : "clear-glass-stage--solid"}`}
               style={fieldStyles.stage}
             >
               <span
@@ -379,8 +449,16 @@ export default function ClearLiquidGlassSuite() {
                 aria-hidden="true"
               />
               <div className="clear-glass-stage__rail" style={fieldStyles.rail}>
-                <span>CLEAR OPTICAL FIELD / {String(fieldNumber).padStart(2, "0")}</span>
-                <small>{field.name} · border treatment excluded</small>
+                <span>
+                  {fieldMode === "gradient"
+                    ? `CLEAR OPTICAL FIELD / ${String(fieldNumber).padStart(2, "0")}`
+                    : "SOLID OPTICAL FIELD / CUSTOM"}
+                </span>
+                <small>
+                  {fieldMode === "gradient"
+                    ? `${field.name} · field layers only`
+                    : `${solidColor.toUpperCase()} · flat contrast test`}
+                </small>
               </div>
               <ClearGlassCard recipe={recipe} settings={settings} />
               <div className="clear-glass-stage__legend">
@@ -388,6 +466,8 @@ export default function ClearLiquidGlassSuite() {
                 <strong>{settings.density}%</strong>
                 <span>diffusion</span>
                 <strong>{settings.diffusion}%</strong>
+                <span>rim</span>
+                <strong>{settings.borderWidth}px</strong>
                 <span>edge</span>
                 <strong>{settings.edge}%</strong>
               </div>
