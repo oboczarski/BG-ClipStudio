@@ -136,11 +136,10 @@ export default function ClearLiquidGlassSuite() {
             "A completely flat color field for judging border readability, body density, tint neutrality, and fallback contrast without gradient detail.",
         };
 
-  function selectRecipe(nextId, matchField = true) {
+  function selectRecipe(nextId) {
     const next = clearGlassRecipes.find((item) => item.id === nextId);
     setRecipeId(nextId);
     setSettings(defaultSettings(next));
-    if (matchField) setFieldId(next.fieldId);
   }
 
   function patchSettings(patch) {
