@@ -6,6 +6,7 @@ import {
   SelectControl,
 } from "../../components/Controls";
 import SectionHeading from "../../components/SectionHeading";
+import ClearLiquidGlassSuite from "./ClearLiquidGlassSuite";
 import {
   getOpticalFieldStyles,
   opticalFields,
@@ -107,6 +108,8 @@ export default function LiquidGlassLab() {
           </div>
         </div>
       </section>
+
+      <ClearLiquidGlassSuite />
 
       <section className="section glass-library">
         <SectionHeading
