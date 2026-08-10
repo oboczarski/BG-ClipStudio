@@ -330,7 +330,7 @@ function FontCard({
       <div className="font-card__specimen">
         <p style={familyStyle}>{displaySample(sample, casing)}</p>
         <span style={familyStyle}>
-          DH dh · Aa Bb Cc · 0123456789 · &amp; ?! %.•, &gt;≤
+          DH dh · Aa Bb Cc · 0123456789 • &amp; ?! % ., &gt;≤ ↑↓←→
         </span>
       </div>
 
