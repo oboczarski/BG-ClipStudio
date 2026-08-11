@@ -112,7 +112,7 @@ export default function App() {
   }
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-active-tab={activeTab}>
       <AppHeader />
       <div id="studio-tabs">
         <Tabs tabs={tabs} activeTab={activeTab} onChange={changeTab} />

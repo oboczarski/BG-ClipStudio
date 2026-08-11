@@ -23,6 +23,105 @@
   --gallery-align: left;
 }
 
+/* Font Gallery-only density overrides. Shared shell elements are gated by the
+   active-tab attribute so every other studio tab retains its base layout. */
+.app-shell[data-active-tab="font-gallery"] .hero {
+  min-height: 360px;
+  padding: clamp(32px, 1vw, 62px);
+}
+
+.app-shell[data-active-tab="font-gallery"] .tabs-shell {
+  margin: 10px 0;
+}
+
+.font-gallery .page-intro {
+  min-height: 165px;
+  align-items: center;
+  padding: clamp(16px, 6vw, 42px);
+}
+
+.font-gallery .page-intro__metrics > div {
+  padding: 8px 13px;
+}
+
+.font-gallery .section {
+  padding: clamp(18px, 0.7vw, 29.9px);
+}
+
+.font-gallery .section-heading {
+  margin-bottom: 12px;
+}
+
+.font-gallery .section-heading p {
+  margin: 7px 0 3px;
+  line-height: 1.35;
+  text-wrap-mode: nowrap;
+}
+
+.font-gallery .control {
+  align-content: space-evenly;
+  gap: 4px;
+}
+
+.font-gallery .color-control input[type="color"] {
+  width: 16px;
+  border-radius: 7px;
+}
+
+.font-gallery .font-toolbar {
+  padding: clamp(15px, 2vw, 12px);
+}
+
+.font-gallery .font-toolbar .control {
+  padding: 5px 8px 6px;
+  border-radius: 11px;
+}
+
+.font-gallery .font-toolbar .control input[type="text"],
+.font-gallery .font-toolbar .control input[type="search"],
+.font-gallery .font-toolbar .control select {
+  height: 36px;
+}
+
+.font-gallery .font-toolbar .color-control {
+  height: 36px;
+}
+
+.font-gallery .font-toolbar .color-control input[type="color"] {
+  height: 28px;
+}
+
+.font-gallery .font-toolbar__actions {
+  align-items: center;
+}
+
+.font-gallery .font-group-overview button {
+  min-height: 46px;
+  padding: 2px 14px;
+}
+
+.font-gallery .font-import-protocol article {
+  padding: 6px 14px;
+}
+
+.font-gallery .font-copy-status {
+  min-height: 0;
+}
+
+.font-gallery .font-group__heading {
+  min-height: 72px;
+  padding: 5px 16px;
+}
+
+.font-gallery .font-card__header {
+  padding: 4px 9px;
+}
+
+.font-gallery .font-card__identity h4 {
+  font-size: 33px;
+  line-height: 2;
+}
+
 .font-gallery__workbench,
 .font-gallery__catalog,
 .font-gallery__source-note {
