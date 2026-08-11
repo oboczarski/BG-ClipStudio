@@ -118,7 +118,7 @@
 }
 
 .font-gallery .font-card__identity h4 {
-  font-size: 33px;
+  font-size: 25px;
   line-height: 2;
 }
 
@@ -546,7 +546,7 @@
   font-size: 40px;
   line-height: 1;
   letter-spacing: var(--gallery-tracking);
-  text-overflow: ellipsis;
+  text-overflow: clip;
   white-space: nowrap;
 }
 
@@ -564,13 +564,13 @@
     rgb(31 40 56 / 98%),
     rgb(17 21 32 / 99%)
   );
-  width: 53px;
+  width: 49px;
   height: 34px;
   color: var(--card-accent);
   border-radius: 8px;
   place-items: center;
   display: grid;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1;
   letter-spacing: 0.08em;
 }

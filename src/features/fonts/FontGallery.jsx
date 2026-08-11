@@ -589,7 +589,7 @@ export default function FontGallery() {
             value={settings.group}
             options={[
               { value: "all", label: "All three groups" },
-              { value: "arrow", label: "ARROW FONTS" },
+              { value: "arrow", label: "Arrow Fonts" },
               ...FONT_GROUPS.map((group) => ({
                 value: group.id,
                 label: group.label,
