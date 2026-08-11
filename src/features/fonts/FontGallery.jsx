@@ -11,6 +11,7 @@ import {
   buildFontEmbedCode,
   buildGoogleFontUrl,
   buildGoogleFontsPageUrl,
+  fontBelongsToGroup,
   fontCatalog,
   fontSlug,
   getDefaultWeight,
@@ -33,6 +34,10 @@ const DEFAULT_SETTINGS = {
 };
 
 const fontLoadPromises = new Map();
+const publicCatalogCount = fontCatalog.filter(
+  (font) => font.catalogStatus === "catalog",
+).length;
+const apiServedCount = fontCatalog.length - publicCatalogCount;
 
 function createFontChoices() {
   return Object.fromEntries(
@@ -151,9 +156,8 @@ function formatWeightInventory(font) {
   return font.weights.join(" · ");
 }
 
-function FontWeightControl({ font, choice, onChange }) {
+function FontWeightControl({ font, choice, controlId, onChange }) {
   const axis = getWeightAxis(font);
-  const controlId = `weight-${fontSlug(font.family)}`;
 
   if (axis) {
     return (
@@ -233,6 +237,7 @@ function SharedCardRangeControl({
 
 function FontCard({
   font,
+  groupId,
   choice,
   sample,
   casing,
@@ -246,7 +251,8 @@ function FontCard({
   onCopy,
 }) {
   const { cardRef, status } = useLazyFont(font);
-  const group = getFontGroup(font.group);
+  const group = getFontGroup(groupId);
+  const controlIdSuffix = `${fontSlug(font.family)}-${groupId}`;
   const familyStyle = {
     fontFamily: `"${font.family}", ${font.fallback}`,
     fontWeight: choice.weight,
@@ -270,7 +276,7 @@ function FontCard({
   return (
     <article
       ref={cardRef}
-      className={`font-card font-card--${font.group}`}
+      className={`font-card font-card--${groupId}`}
       data-font-status={status}
     >
       <header className="font-card__header">
@@ -279,7 +285,18 @@ function FontCard({
             {String(fontCatalog.indexOf(font) + 1).padStart(2, "0")}
           </span>
           <div>
-            <h4 style={familyStyle}>{font.family}</h4>
+            <div className="font-card__name-row">
+              <h4 style={familyStyle}>{font.family}</h4>
+              {font.arrowFont ? (
+                <div
+                  className="font-card__arrow-chips"
+                  aria-label="Arrow font directions"
+                >
+                  <span className="font-card__arrow-chip">↓ ↑</span>
+                  <span className="font-card__arrow-chip">← →</span>
+                </div>
+              ) : null}
+            </div>
             <p>{designerLabel}</p>
           </div>
         </div>
@@ -313,18 +330,6 @@ function FontCard({
             />
           </label>
         </div>
-        <div className="font-card__status">
-          <span className={`font-load font-load--${status}`} aria-hidden="true" />
-          <small>
-            {status === "ready"
-              ? "type loaded"
-              : status === "failed"
-                ? "load failed"
-                : status === "loading"
-                  ? "loading type"
-                  : "load queued"}
-          </small>
-        </div>
       </header>
 
       <div className="font-card__specimen">
@@ -338,10 +343,11 @@ function FontCard({
         <FontWeightControl
           font={font}
           choice={choice}
+          controlId={`weight-${controlIdSuffix}`}
           onChange={updateChoice}
         />
         <SharedCardRangeControl
-          controlId={`size-${fontSlug(font.family)}`}
+          controlId={`size-${controlIdSuffix}`}
           label="Font size"
           value={size}
           min={20}
@@ -350,7 +356,7 @@ function FontCard({
           onChange={(value) => onSharedSettingChange("size", value)}
         />
         <SharedCardRangeControl
-          controlId={`tracking-${fontSlug(font.family)}`}
+          controlId={`tracking-${controlIdSuffix}`}
           label="Letter spacing"
           value={tracking}
           min={-5}
@@ -362,6 +368,18 @@ function FontCard({
       </div>
 
       <div className="font-card__metadata" aria-label="Font metadata">
+        <div className="font-card__status">
+          <span className={`font-load font-load--${status}`} aria-hidden="true" />
+          <small>
+            {status === "ready"
+              ? "type loaded"
+              : status === "failed"
+                ? "load failed"
+                : status === "loading"
+                  ? "loading type"
+                  : "load queued"}
+          </small>
+        </div>
         <span className="font-card__metadata-accent">{group.shortLabel}</span>
         <span>{font.category}</span>
         <span>{formatWeightInventory(font)}</span>
@@ -413,7 +431,9 @@ function GroupOverview({ activeGroup, onSelect }) {
   return (
     <div className="font-group-overview" aria-label="Font category summary">
       {FONT_GROUPS.map((group, index) => {
-        const count = fontCatalog.filter((font) => font.group === group.id).length;
+        const count = fontCatalog.filter((font) =>
+          fontBelongsToGroup(font, group.id),
+        ).length;
         return (
           <button
             key={group.id}
@@ -440,7 +460,10 @@ export default function FontGallery() {
     const query = settings.search.trim().toLocaleLowerCase();
     return fontCatalog.filter((font) => {
       const matchesGroup =
-        settings.group === "all" || font.group === settings.group;
+        settings.group === "all" ||
+        (settings.group === "arrow"
+          ? font.arrowFont
+          : fontBelongsToGroup(font, settings.group));
       const matchesSearch =
         !query || font.family.toLocaleLowerCase().includes(query);
       return matchesGroup && matchesSearch;
@@ -449,7 +472,7 @@ export default function FontGallery() {
 
   const visibleGroups = FONT_GROUPS.map((group) => ({
     ...group,
-    fonts: filteredFonts.filter((font) => font.group === group.id),
+    fonts: filteredFonts.filter((font) => fontBelongsToGroup(font, group.id)),
   })).filter((group) => group.fonts.length > 0);
 
   const galleryStyle = {
@@ -502,7 +525,7 @@ export default function FontGallery() {
       <section className="page-intro page-intro--fonts">
         <div>
           <span className="page-intro__eyebrow">A living type catalog</span>
-          <h2>Sixty-three voices. One disciplined library.</h2>
+          <h2>{fontCatalog.length} voices. One disciplined library.</h2>
         </div>
         <p>
           Compare every requested family with shared specimen controls and truthful
@@ -512,7 +535,7 @@ export default function FontGallery() {
         </p>
         <div className="page-intro__metrics">
           <div>
-            <strong>63</strong>
+            <strong>{fontCatalog.length}</strong>
             <span>requested families</span>
           </div>
           <div>
@@ -565,6 +588,7 @@ export default function FontGallery() {
             value={settings.group}
             options={[
               { value: "all", label: "All three groups" },
+              { value: "arrow", label: "ARROW FONTS" },
               ...FONT_GROUPS.map((group) => ({
                 value: group.id,
                 label: group.label,
@@ -735,8 +759,9 @@ export default function FontGallery() {
                 <div className="font-card-grid">
                   {group.fonts.map((font) => (
                     <FontCard
-                      key={font.family}
+                      key={`${group.id}-${font.family}`}
                       font={font}
+                      groupId={group.id}
                       choice={fontChoices[font.family]}
                       sample={settings.sample}
                       casing={settings.casing}
@@ -756,7 +781,7 @@ export default function FontGallery() {
           </div>
         ) : (
           <div className="font-empty-state">
-            <span>0 / 63</span>
+            <span>0 / {fontCatalog.length}</span>
             <h3>No family matches that search.</h3>
             <p>
               Try a shorter family name, or clear the category and search filters
@@ -777,8 +802,8 @@ export default function FontGallery() {
         <SectionHeading
           kicker="03 · source and usage notes"
           title="A gallery can be beautiful and still tell the truth."
-          description="Sixty-one requested families are represented in the public Google Fonts metadata catalog. Product Sans and Avenir are served by the stylesheet endpoint but are not ordinary public-catalog entries, so their cards include explicit usage notices."
-          badge="61 catalog · 2 api-served"
+          description={`${publicCatalogCount} requested families are represented in the public Google Fonts metadata catalog. Product Sans and Avenir are served by the stylesheet endpoint but are not ordinary public-catalog entries, so their cards include explicit usage notices.`}
+          badge={`${publicCatalogCount} catalog · ${apiServedCount} api-served`}
         />
         <div className="font-source-ledger">
           <div>

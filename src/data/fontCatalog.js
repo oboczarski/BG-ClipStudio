@@ -31,7 +31,7 @@ function fallbackFor(category) {
 
 function catalogFont(
   family,
-  group,
+  groups,
   {
     category,
     weights = [400],
@@ -43,11 +43,12 @@ function catalogFont(
     colorCapabilities = [],
     catalogStatus = "catalog",
     licenseNote = "",
+    arrowFont = false,
   },
 ) {
   return {
     family,
-    group,
+    groups: Array.isArray(groups) ? groups : [groups],
     category,
     fallback: fallbackFor(category),
     weights,
@@ -59,6 +60,7 @@ function catalogFont(
     colorCapabilities,
     catalogStatus,
     licenseNote,
+    arrowFont,
   };
 }
 
@@ -179,6 +181,41 @@ export const fontCatalog = [
     weights: [300, 400, 700],
     designers: ["Indian Type Foundry"],
   }),
+  catalogFont("RocknRoll One", "handwritten", {
+    category: "Sans Serif",
+    designers: ["Fontworks Inc."],
+    arrowFont: true,
+  }),
+  catalogFont("Yusei Magic", "handwritten", {
+    category: "Sans Serif",
+    designers: ["Tanukizamurai"],
+    arrowFont: true,
+  }),
+  catalogFont("Sedgwick Ave Display", "handwritten", {
+    category: "Handwriting",
+    designers: ["Pedro Vergani", "Kevin Burke"],
+    arrowFont: true,
+  }),
+  catalogFont("Sedgwick Ave", "handwritten", {
+    category: "Handwriting",
+    designers: ["Pedro Vergani", "Kevin Burke"],
+    arrowFont: true,
+  }),
+  catalogFont("Dekko", "handwritten", {
+    category: "Handwriting",
+    designers: ["Sorkin Type"],
+    arrowFont: true,
+  }),
+  catalogFont("Story Script", "handwritten", {
+    category: "Sans Serif",
+    designers: ["Lana Roulhac", "Ben Buysse"],
+    arrowFont: true,
+  }),
+  catalogFont("Farsan", "handwritten", {
+    category: "Display",
+    designers: ["Pooja Saxena"],
+    arrowFont: true,
+  }),
 
   // 02 · Display
   catalogFont("Bruno Ace SC", "display", {
@@ -248,6 +285,7 @@ export const fontCatalog = [
   catalogFont("Momo Trust Display", "display", {
     category: "Sans Serif",
     designers: ["Type Associates"],
+    arrowFont: true,
   }),
   catalogFont("Righteous", "display", {
     category: "Display",
@@ -257,19 +295,7 @@ export const fontCatalog = [
     category: "Display",
     designers: ["Luke Prowse"],
   }),
-  catalogFont("Fraunces", "display", {
-    category: "Serif",
-    weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-    italic: true,
-    axes: [
-      { tag: "SOFT", min: 0, max: 100, defaultValue: 0 },
-      { tag: "WONK", min: 0, max: 1, defaultValue: 0 },
-      { tag: "opsz", min: 9, max: 144, defaultValue: 14 },
-      weightAxis(100, 900),
-    ],
-    designers: ["Undercase Type", "Phaedra Charles", "Flavia Zimbardi"],
-  }),
-  catalogFont("Syne", "display", {
+  catalogFont("Syne", ["display", "basic"], {
     category: "Sans Serif",
     weights: [400, 500, 600, 700, 800],
     axes: [weightAxis(400, 800)],
@@ -279,7 +305,7 @@ export const fontCatalog = [
       "George Triantafyllakos",
     ],
   }),
-  catalogFont("Unbounded", "display", {
+  catalogFont("Unbounded", ["display", "basic"], {
     category: "Sans Serif",
     weights: [200, 300, 400, 500, 600, 700, 800, 900],
     axes: [weightAxis(200, 900)],
@@ -307,8 +333,131 @@ export const fontCatalog = [
     category: "Monospace",
     designers: ["Vernon Adams"],
   }),
+  catalogFont("Mochiy Pop One", "display", {
+    category: "Sans Serif",
+    designers: ["FONTDASU"],
+    arrowFont: true,
+  }),
+  catalogFont("Rampart One", "display", {
+    category: "Display",
+    designers: ["Fontworks Inc."],
+    arrowFont: true,
+  }),
+  catalogFont("Honk", "display", {
+    category: "Display",
+    axes: [
+      { tag: "MORF", min: 0, max: 45, defaultValue: 15 },
+      { tag: "SHLN", min: 0, max: 100, defaultValue: 50 },
+    ],
+    designers: ["Ek Type"],
+    colorCapabilities: ["COLRV1"],
+    arrowFont: true,
+  }),
+  catalogFont("Bungee", "display", {
+    category: "Display",
+    designers: ["David Jonathan Ross"],
+    arrowFont: true,
+  }),
+  catalogFont("Stack Sans Notch", "display", {
+    category: "Sans Serif",
+    weights: [200, 300, 400, 500, 600, 700],
+    axes: [weightAxis(200, 700)],
+    designers: ["Koto"],
+    arrowFont: true,
+  }),
+  catalogFont("Alumni Sans Pinstripe", "display", {
+    category: "Sans Serif",
+    italic: true,
+    designers: ["Robert Leuschke"],
+    arrowFont: true,
+  }),
+  catalogFont("Bungee Hairline", "display", {
+    category: "Display",
+    designers: ["David Jonathan Ross"],
+    arrowFont: true,
+  }),
+  catalogFont("Zalando Sans SemiExpanded", "display", {
+    category: "Sans Serif",
+    weights: [200, 300, 400, 500, 600, 700, 800, 900],
+    italic: true,
+    axes: [weightAxis(200, 900)],
+    designers: ["Jakob Ekelund", "KH Type", "Zalando"],
+    arrowFont: true,
+  }),
+  catalogFont("Tilt Prism", "display", {
+    category: "Display",
+    axes: [
+      { tag: "XROT", min: -45, max: 45, defaultValue: 0 },
+      { tag: "YROT", min: -45, max: 45, defaultValue: 0 },
+    ],
+    designers: ["Andy Clymer"],
+    arrowFont: true,
+  }),
+  catalogFont("Danfo", "display", {
+    category: "Serif",
+    axes: [{ tag: "ELSH", min: 0, max: 100, defaultValue: 0 }],
+    designers: [
+      "Afrotype",
+      "Seyi Olusanya",
+      "Eyiyemi Adegbite",
+      "David Udoh",
+      "Mirko Velimirović",
+    ],
+    arrowFont: true,
+  }),
+  catalogFont("Kumar One Outline", "display", {
+    category: "Display",
+    designers: ["Indian Type Foundry"],
+  }),
+  catalogFont("Bagel Fat One", "display", {
+    category: "Display",
+    designers: ["Kyungwon Kim", "JAMO"],
+    arrowFont: true,
+  }),
+  catalogFont("Train One", "display", {
+    category: "Display",
+    designers: ["Fontworks Inc."],
+    arrowFont: true,
+  }),
+  catalogFont("Potta One", "display", {
+    category: "Display",
+    designers: ["Font Zone 108"],
+    arrowFont: true,
+  }),
+  catalogFont("Dela Gothic One", "display", {
+    category: "Display",
+    designers: ["artakana"],
+    arrowFont: true,
+  }),
+  catalogFont("Moirai One", "display", {
+    category: "Display",
+    designers: ["Jiyeon Park", "JAMO"],
+    arrowFont: true,
+  }),
+  catalogFont("Special Gothic Expanded One", "display", {
+    category: "Sans Serif",
+    designers: ["Alistair McCready"],
+    arrowFont: true,
+  }),
+  catalogFont("Barriecito", "display", {
+    category: "Display",
+    designers: ["Omnibus-Type"],
+    arrowFont: true,
+  }),
 
   // 03 · Basic
+  catalogFont("Fraunces", "basic", {
+    category: "Serif",
+    weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    italic: true,
+    axes: [
+      { tag: "SOFT", min: 0, max: 100, defaultValue: 0 },
+      { tag: "WONK", min: 0, max: 1, defaultValue: 0 },
+      { tag: "opsz", min: 9, max: 144, defaultValue: 14 },
+      weightAxis(100, 900),
+    ],
+    designers: ["Undercase Type", "Phaedra Charles", "Flavia Zimbardi"],
+  }),
   catalogFont("Google Sans", "basic", {
     category: "Sans Serif",
     weights: [400, 500, 600, 700],
@@ -386,6 +535,7 @@ export const fontCatalog = [
       weightAxis(400, 700),
     ],
     designers: ["Rodrigo Fuenzalida", "Jordan Egstad"],
+    arrowFont: true,
   }),
   catalogFont("Spline Sans", "basic", {
     category: "Sans Serif",
@@ -443,10 +593,84 @@ export const fontCatalog = [
     ],
     designers: ["Arrow Type", "Stephen Nixon"],
   }),
+  catalogFont("LINE Seed JP", "basic", {
+    category: "Sans Serif",
+    weights: [100, 400, 700, 800],
+    designers: ["LY Corporation", "Fontrix", "Fontworks"],
+    arrowFont: true,
+  }),
+  catalogFont("Google Sans Code", "basic", {
+    category: "Monospace",
+    weights: [300, 400, 500, 600, 700, 800],
+    italic: true,
+    axes: [
+      { tag: "MONO", min: 0, max: 1, defaultValue: 1 },
+      weightAxis(300, 800),
+    ],
+    designers: ["Google", "Universal Thirst"],
+    brand: true,
+    arrowFont: true,
+  }),
+  catalogFont("IBM Plex Sans KR", "basic", {
+    category: "Sans Serif",
+    weights: [100, 200, 300, 400, 500, 600, 700],
+    designers: ["Mike Abbink", "Bold Monday"],
+    arrowFont: true,
+  }),
+  catalogFont("Pliant", "basic", {
+    category: "Sans Serif",
+    weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    italic: true,
+    axes: [
+      { tag: "wdth", min: 100, max: 125, defaultValue: 100 },
+      weightAxis(100, 900),
+    ],
+    designers: ["Non Foundry", "Jona Saucedo"],
+    arrowFont: true,
+  }),
+  catalogFont("Source Serif 4", "basic", {
+    category: "Serif",
+    weights: [200, 300, 400, 500, 600, 700, 800, 900],
+    italic: true,
+    axes: [
+      { tag: "opsz", min: 8, max: 60, defaultValue: 14 },
+      weightAxis(200, 900),
+    ],
+    designers: ["Frank Grießhammer"],
+    arrowFont: true,
+  }),
+  catalogFont("Encode Sans SC", "basic", {
+    category: "Sans Serif",
+    weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    axes: [
+      { tag: "wdth", min: 75, max: 125, defaultValue: 100 },
+      weightAxis(100, 900),
+    ],
+    designers: ["Impallari Type", "Andres Torresi", "Jacques Le Bailly"],
+    arrowFont: true,
+  }),
+  catalogFont("Brygada 1918", "basic", {
+    category: "Serif",
+    weights: [400, 500, 600, 700],
+    italic: true,
+    axes: [weightAxis(400, 700)],
+    designers: [
+      "Capitalics",
+      "Mateusz Machalski",
+      "Borys Kosmynka",
+      "Ania Wieluńska",
+      "Przemysław Hoffer",
+    ],
+    arrowFont: true,
+  }),
 ];
 
 export function getFontGroup(groupId) {
   return FONT_GROUPS.find((group) => group.id === groupId);
+}
+
+export function fontBelongsToGroup(font, groupId) {
+  return font.groups.includes(groupId);
 }
 
 export function getWeightAxis(font) {

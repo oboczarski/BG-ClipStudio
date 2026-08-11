@@ -529,7 +529,16 @@
   min-width: 0;
 }
 
+.font-card__name-row {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .font-card__identity h4 {
+  flex: 0 1 auto;
+  min-width: 0;
   max-width: 100%;
   margin: 0;
   overflow: hidden;
@@ -539,6 +548,30 @@
   letter-spacing: var(--gallery-tracking);
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.font-card__arrow-chips {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.font-card__arrow-chip {
+  border: 0px solid transparent;
+  background: linear-gradient(
+    180deg,
+    rgb(31 40 56 / 98%),
+    rgb(17 21 32 / 99%)
+  );
+  width: 53px;
+  height: 34px;
+  color: var(--card-accent);
+  border-radius: 8px;
+  place-items: center;
+  display: grid;
+  font: 800 14px/1 var(--mono);
+  letter-spacing: 0.08em;
 }
 
 .font-card__identity p {
@@ -611,6 +644,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 0 4px;
 }
 
 .font-card__status small {

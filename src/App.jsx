@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Tabs from "./components/Tabs";
+import { fontCatalog } from "./data/fontCatalog";
 import LayerBreakdown from "./features/breakdown/LayerBreakdown";
 import CardDesigns from "./features/cards/CardDesigns";
 import FontGallery from "./features/fonts/FontGallery";
@@ -13,7 +14,11 @@ const tabs = [
   { id: "origin-lab", label: "Origin lab", count: "04" },
   { id: "text-lab", label: "Text lab", count: "16" },
   { id: "liquid-glass", label: "Liquid glass", count: "10" },
-  { id: "font-gallery", label: "Font gallery", count: "63" },
+  {
+    id: "font-gallery",
+    label: "Font gallery",
+    count: String(fontCatalog.length),
+  },
 ];
 
 function readInitialTab() {
