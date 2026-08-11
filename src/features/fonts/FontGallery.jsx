@@ -293,8 +293,8 @@ function FontCard({
                   aria-label="Arrow font directions"
                   style={familyStyle}
                 >
-                  <span className="font-card__arrow-chip">↓ ↑</span>
-                  <span className="font-card__arrow-chip">← →</span>
+                  <span className="font-card__arrow-chip">↓↑</span>
+                  <span className="font-card__arrow-chip">←→</span>
                 </div>
               ) : null}
             </div>
