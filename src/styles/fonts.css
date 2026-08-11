@@ -565,14 +565,14 @@
     rgb(17 21 32 / 99%)
   );
   width: 49px;
-  height: 34px;
+  height: 32px;
   color: var(--card-accent);
   border-radius: 8px;
   place-items: center;
   display: grid;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
 }
 
 .font-card__identity p {
