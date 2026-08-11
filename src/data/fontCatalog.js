@@ -44,6 +44,7 @@ function catalogFont(
     catalogStatus = "catalog",
     licenseNote = "",
     arrowFont = false,
+    verticalArrowOnly = false,
   },
 ) {
   return {
@@ -61,6 +62,7 @@ function catalogFont(
     catalogStatus,
     licenseNote,
     arrowFont,
+    verticalArrowOnly,
   };
 }
 
@@ -195,25 +197,35 @@ export const fontCatalog = [
     category: "Handwriting",
     designers: ["Pedro Vergani", "Kevin Burke"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Sedgwick Ave", "handwritten", {
     category: "Handwriting",
     designers: ["Pedro Vergani", "Kevin Burke"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Dekko", "handwritten", {
     category: "Handwriting",
     designers: ["Sorkin Type"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Story Script", "handwritten", {
     category: "Sans Serif",
     designers: ["Lana Roulhac", "Ben Buysse"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Farsan", "handwritten", {
     category: "Display",
     designers: ["Pooja Saxena"],
+    arrowFont: true,
+    verticalArrowOnly: true,
+  }),
+  catalogFont("Hachi Maru Pop", "handwritten", {
+    category: "Handwriting",
+    designers: ["Nonty"],
     arrowFont: true,
   }),
 
@@ -286,6 +298,7 @@ export const fontCatalog = [
     category: "Sans Serif",
     designers: ["Type Associates"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Righteous", "display", {
     category: "Display",
@@ -357,6 +370,7 @@ export const fontCatalog = [
     category: "Display",
     designers: ["David Jonathan Ross"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Stack Sans Notch", "display", {
     category: "Sans Serif",
@@ -364,17 +378,20 @@ export const fontCatalog = [
     axes: [weightAxis(200, 700)],
     designers: ["Koto"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Alumni Sans Pinstripe", "display", {
     category: "Sans Serif",
     italic: true,
     designers: ["Robert Leuschke"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Bungee Hairline", "display", {
     category: "Display",
     designers: ["David Jonathan Ross"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Zalando Sans SemiExpanded", "display", {
     category: "Sans Serif",
@@ -383,6 +400,7 @@ export const fontCatalog = [
     axes: [weightAxis(200, 900)],
     designers: ["Jakob Ekelund", "KH Type", "Zalando"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Tilt Prism", "display", {
     category: "Display",
@@ -404,6 +422,7 @@ export const fontCatalog = [
       "Mirko Velimirović",
     ],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Kumar One Outline", "display", {
     category: "Display",
@@ -438,10 +457,22 @@ export const fontCatalog = [
     category: "Sans Serif",
     designers: ["Alistair McCready"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Barriecito", "display", {
     category: "Display",
     designers: ["Omnibus-Type"],
+    arrowFont: true,
+    verticalArrowOnly: true,
+  }),
+  catalogFont("WDXL Lubrifont JP N", "display", {
+    category: "Sans Serif",
+    designers: ["NightFurySL2001"],
+    arrowFont: true,
+  }),
+  catalogFont("Stick", "display", {
+    category: "Sans Serif",
+    designers: ["Fontworks Inc."],
     arrowFont: true,
   }),
 
@@ -536,6 +567,7 @@ export const fontCatalog = [
     ],
     designers: ["Rodrigo Fuenzalida", "Jordan Egstad"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Spline Sans", "basic", {
     category: "Sans Serif",
@@ -627,6 +659,7 @@ export const fontCatalog = [
     ],
     designers: ["Non Foundry", "Jona Saucedo"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Source Serif 4", "basic", {
     category: "Serif",
@@ -638,6 +671,7 @@ export const fontCatalog = [
     ],
     designers: ["Frank Grießhammer"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Encode Sans SC", "basic", {
     category: "Sans Serif",
@@ -648,6 +682,7 @@ export const fontCatalog = [
     ],
     designers: ["Impallari Type", "Andres Torresi", "Jacques Le Bailly"],
     arrowFont: true,
+    verticalArrowOnly: true,
   }),
   catalogFont("Brygada 1918", "basic", {
     category: "Serif",
@@ -661,6 +696,33 @@ export const fontCatalog = [
       "Ania Wieluńska",
       "Przemysław Hoffer",
     ],
+    arrowFont: true,
+    verticalArrowOnly: true,
+  }),
+  catalogFont("M PLUS Rounded 1c", "basic", {
+    category: "Sans Serif",
+    weights: [100, 300, 400, 500, 700, 800, 900],
+    designers: ["Coji Morishita", "M+ Fonts Project"],
+    arrowFont: true,
+  }),
+  catalogFont("Diphylleia", "basic", {
+    category: "Serif",
+    designers: ["Minha Hyung", "JAMO"],
+    arrowFont: true,
+  }),
+  catalogFont("Murecho", "basic", {
+    category: "Sans Serif",
+    weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    axes: [weightAxis(100, 900)],
+    designers: ["Neil Summerour"],
+    arrowFont: true,
+  }),
+  catalogFont("Ysabeau Infant", "basic", {
+    category: "Sans Serif",
+    weights: [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+    italic: true,
+    axes: [weightAxis(1, 1000)],
+    designers: ["Christian Thalmann"],
     arrowFont: true,
   }),
 ];

@@ -290,11 +290,17 @@ function FontCard({
               {font.arrowFont ? (
                 <div
                   className="font-card__arrow-chips"
-                  aria-label="Arrow font directions"
+                  aria-label={
+                    font.verticalArrowOnly
+                      ? "Vertical arrow font directions"
+                      : "Vertical and horizontal arrow font directions"
+                  }
                   style={familyStyle}
                 >
-                  <span className="font-card__arrow-chip">↓↑</span>
-                  <span className="font-card__arrow-chip">←→</span>
+                  <span className="font-card__arrow-chip">↑↓</span>
+                  {!font.verticalArrowOnly ? (
+                    <span className="font-card__arrow-chip">←→</span>
+                  ) : null}
                 </div>
               ) : null}
             </div>
@@ -463,8 +469,10 @@ export default function FontGallery() {
       const matchesGroup =
         settings.group === "all" ||
         (settings.group === "arrow"
-          ? font.arrowFont
-          : fontBelongsToGroup(font, settings.group));
+          ? font.arrowFont && !font.verticalArrowOnly
+          : settings.group === "vertical-arrow"
+            ? font.arrowFont
+            : fontBelongsToGroup(font, settings.group));
       const matchesSearch =
         !query || font.family.toLocaleLowerCase().includes(query);
       return matchesGroup && matchesSearch;
@@ -590,6 +598,7 @@ export default function FontGallery() {
             options={[
               { value: "all", label: "All three groups" },
               { value: "arrow", label: "Arrow Fonts" },
+              { value: "vertical-arrow", label: "Vert Arrow Fonts" },
               ...FONT_GROUPS.map((group) => ({
                 value: group.id,
                 label: group.label,
