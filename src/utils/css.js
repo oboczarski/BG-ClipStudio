@@ -30,8 +30,9 @@ export function clamp(value, min, max) {
 export function cssPropertyName(property) {
   if (property.startsWith("--")) return property;
   if (property.startsWith("Webkit")) {
-    return `-webkit-${property
-      .slice(6)
+    const unprefixedProperty = property.slice(6);
+    return `-webkit-${unprefixedProperty
+      .replace(/^[A-Z]/, (character) => character.toLowerCase())
       .replace(/[A-Z]/g, (character) => `-${character.toLowerCase()}`)}`;
   }
   return property.replace(/[A-Z]/g, (character) => `-${character.toLowerCase()}`);

@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
 import Tabs from "./components/Tabs";
+import { fontCatalog } from "./data/fontCatalog";
 import LayerBreakdown from "./features/breakdown/LayerBreakdown";
 import CardDesigns from "./features/cards/CardDesigns";
+import FontGallery from "./features/fonts/FontGallery";
 import LiquidGlassLab from "./features/glass/LiquidGlassLab";
 import OriginLab from "./features/origin/OriginLab";
 import TextLab from "./features/text/TextLab";
 
 const tabs = [
-  { id: "card-designs", label: "Card designs", count: "41" },
+  { id: "card-designs", label: "Card designs", count: "43" },
   { id: "layer-anatomy", label: "Layer anatomy", count: "04" },
   { id: "origin-lab", label: "Origin lab", count: "04" },
-  { id: "text-lab", label: "Text lab", count: "08" },
-  { id: "liquid-glass", label: "Liquid glass", count: "08" },
+  { id: "text-lab", label: "Text lab", count: "16" },
+  { id: "liquid-glass", label: "Liquid glass", count: "10" },
+  {
+    id: "font-gallery",
+    label: "Font gallery",
+    count: String(fontCatalog.length),
+  },
 ];
 
 function readInitialTab() {
@@ -55,15 +62,15 @@ function AppHeader() {
           </h1>
           <p>
             Explore layered cards, edit real gradient stops, understand background
-            geometry, forge production-ready text, and build liquid glass with
-            optical depth. Every specimen ships with CSS generated from the exact
-            values on screen.
+            geometry, forge production-ready text, build liquid glass with optical
+            depth, and audition a complete font library. Every specimen ships with
+            code generated from the exact values on screen.
           </p>
           <div className="hero__actions">
             <a href="#studio-tabs" className="button button--primary">
               Enter the foundry
             </a>
-            <span>65 practical specimens · 4 full workbenches</span>
+            <span>140 practical specimens · 5 full workbenches</span>
           </div>
         </div>
 
@@ -110,7 +117,7 @@ export default function App() {
   }
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-active-tab={activeTab}>
       <AppHeader />
       <div id="studio-tabs">
         <Tabs tabs={tabs} activeTab={activeTab} onChange={changeTab} />
@@ -156,6 +163,14 @@ export default function App() {
           hidden={activeTab !== "liquid-glass"}
         >
           <LiquidGlassLab />
+        </section>
+        <section
+          id="panel-font-gallery"
+          role="tabpanel"
+          aria-labelledby="tab-font-gallery"
+          hidden={activeTab !== "font-gallery"}
+        >
+          <FontGallery />
         </section>
       </main>
 
